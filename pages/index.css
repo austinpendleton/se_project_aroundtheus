@@ -3,4 +3,5 @@
 @import url(../blocks/cards.css);
 @import url(../blocks/footer.css);
 @import url(../blocks/header.css);
-@import url(../fonts/fonts.css);
+@import url(../vendor/fonts.css);
+@import url(../vendor/normalize.css);
