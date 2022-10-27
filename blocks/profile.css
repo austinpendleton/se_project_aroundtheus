@@ -126,8 +126,6 @@
     margin: 0;
   }
   .profile__title {
-    font-size: 26px;
-    line-height: 32px;
     white-space: nowrap;
     font-family: "Inter", Arial, sans-serif;
     font-weight: 500;
@@ -136,8 +134,6 @@
     text-align: center;
   }
   .profile__subheading {
-    font-size: 16px;
-    line-height: 19px;
     max-width: 350px;
     font-family: "Inter", Arial, sans-serif;
     font-weight: 400;
