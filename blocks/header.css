@@ -1,25 +1,19 @@
 .header {
   margin-top: 45px;
   height: 74px;
-  border: 1px inset #545454;
-  border-right-style: none;
+  border-bottom: 1px inset rgba(84, 84, 84, 0.7);
 }
-.header__logo {
-  margin-left: 27px;
-}
+
 @media screen and (max-width: 470px) {
   .header {
-    margin: 28px 167px 0 0;
-  }
-  .header__logo {
-    margin-left: 27px;
+    margin: 28px 0 0 0;
+    height: 55px;
   }
 }
 @media screen and (max-width: 768px) {
   .header {
-    max-width: 320px;
+    max-width: 100%;
     min-width: 0;
-    padding-bottom: 32px;
   }
   .header__logo {
     width: 126px;
