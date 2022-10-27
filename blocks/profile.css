@@ -63,6 +63,7 @@
   padding: 0;
   border-radius: 2px;
   transition: opacity 0.2s linear;
+  border: 2px solid #ffffff;
 }
 .profile__add-button:hover {
   opacity: 0.6;
@@ -80,7 +81,7 @@
   .profile__info {
     grid-template-columns: 10fr 1fr;
     grid-column-gap: 10px;
-    margin-top: 26.25px;
+    padding-top: 26.25px;
   }
   .profile__description {
     width: 100%;
@@ -127,7 +128,6 @@
   }
   .profile__title {
     white-space: nowrap;
-    font-family: "Inter", Arial, sans-serif;
     font-weight: 500;
     font-size: 22px;
     line-height: 26.63px;
@@ -135,7 +135,6 @@
   }
   .profile__subheading {
     max-width: 350px;
-    font-family: "Inter", Arial, sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 16.94px;
