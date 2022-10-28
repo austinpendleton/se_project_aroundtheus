@@ -81,7 +81,7 @@
   .profile__info {
     grid-template-columns: 10fr 1fr;
     grid-column-gap: 10px;
-    padding-top: 26.25px;
+    padding-top: 30px;
   }
   .profile__description {
     width: 100%;
@@ -132,12 +132,15 @@
     font-size: 22px;
     line-height: 26.63px;
     text-align: center;
+    font-family: "Inter", Arial, sans-serif;
+    font-style: medium;
   }
   .profile__subheading {
     max-width: 350px;
     font-weight: 400;
     font-size: 14px;
-    line-height: 16.94px;
+    line-height: 17px;
     text-align: center;
+    font-family: "Inter", Arial, sans-serif;
   }
 }
