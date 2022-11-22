@@ -28,10 +28,15 @@ const initialCards = [
 const editButton = document.querySelector(".profile__edit-button");
 const closeButton = document.querySelector(".modal-button");
 
-let modal = document.querySelector(".modal");
+const modal = document.querySelector(".modal");
 
 function toggleModal() {
-  modal.classList.toggle("modal__opened");
+  modal.classList.toggle("modal_opened");
+
+  if (modal.classList.contains("modal_opened")) {
+    formInputName.value = profileName.textContent;
+    formInputTag.value = profileTag.textContent;
+  }
 }
 
 editButton.addEventListener("click", toggleModal);
@@ -56,3 +61,28 @@ function handleProfileSubmit(e) {
 
   toggleModal();
 }
+
+profileFormElement.addEventListener("submit", handleProfileSubmit);
+
+function getCardElement(data) {
+  const cardTemplate = document.querySelector("#card-element").content;
+  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+
+  const cardTitle = cardElement.querySelector(".card__description");
+  const cardImage = cardElement.querySelector(".card__image");
+
+  cardTitle.textContent = data.name;
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
+
+  return cardElement;
+}
+
+function createCardsList(card) {
+  const cardsList = document.querySelector(".cards__list");
+  const newCardElement = getCardElement(card);
+
+  cardsList.prepend(newCardElement);
+}
+
+initialCards.forEach(createCardsList);
