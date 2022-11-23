@@ -34,7 +34,7 @@
   cursor: pointer;
   opacity: 0.5;
 }
-.card__text {
+.card__title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

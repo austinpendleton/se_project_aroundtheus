@@ -22,5 +22,7 @@ What made this project unique from our previous projects was we were tasked with
 
 Currently the landing page doesn't have much function besides the awesome design to display some images. But we will building off of this design in future projects to make it a more functional platform!
 
+UPDATE: The page now enables you to edit the profile name and subheading!
+
 <img src= "./images/full-site-screenshot.png">
 <img src= "./images/mobile-site-screenshot.png">

@@ -19,14 +19,17 @@
   pointer-events: all;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
-.modal-button {
+.modal__button {
   background: transparent url(../images/Close\ Icon.png) center no-repeat;
-  width: 40px;
+  background-size: 40px 40px;
+  border: none;
+  position: absolute;
+  display: block;
   height: 40px;
-  padding: 0;
+  width: 40px;
   cursor: pointer;
-  transition-duration: 0.5s;
-  margin-left: 430px;
+  margin-bottom: 370px;
+  margin-left: 465px;
 }
 .modal__container {
   display: flex;
@@ -34,7 +37,7 @@
   background: #ffffff;
   border-radius: 10px;
   height: 330px;
-  max-width: 430px;
+  width: 430px;
   box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
 }
 .modal__container-title {
@@ -80,8 +83,10 @@
   font-weight: 400;
   line-height: 1.2;
   font-size: 18px;
-  margin: 48px 36px 0 36px;
+  margin-left: auto;
+  margin-right: auto;
   background: #000;
+  width: 358px;
   height: 50px;
   color: #ffffff;
   text-align: center;
@@ -96,7 +101,8 @@
 @media screen and (max-width: 589px) {
   .modal {
     margin-top: 161px;
-    margin-left: 141px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .modal-button {
     margin-left: 256px;
@@ -110,6 +116,7 @@
   }
   .modal__container-title {
     font-size: 18px;
+    line-height: 22px;
     margin: 25px 0 75px 22px;
   }
   .modal__container-name {

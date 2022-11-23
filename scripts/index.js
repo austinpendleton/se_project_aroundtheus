@@ -26,34 +26,32 @@ const initialCards = [
 ];
 
 const editButton = document.querySelector(".profile__edit-button");
-const closeButton = document.querySelector(".modal-button");
+const closeButton = document.querySelector(".modal__button");
 
 const modal = document.querySelector(".modal");
 
-function toggleModal() {
-  modal.classList.toggle("modal_opened");
+const profileName = document.querySelector(".profile__title");
+const profileTag = document.querySelector(".profile__subheading");
 
-  if (modal.classList.contains("modal_opened")) {
+const formInputName = document.querySelector("#name");
+const formInputTag = document.querySelector("#about-me");
+
+function toggleModal() {
+  modal.classList.toggle("modal__opened");
+
+  if (modal.classList.contains("modal__opened")) {
     formInputName.value = profileName.textContent;
     formInputTag.value = profileTag.textContent;
   }
 }
 
 editButton.addEventListener("click", toggleModal);
+
 closeButton.addEventListener("click", toggleModal);
 
-const profileName = document.querySelector(".profile__name");
-const profileTag = document.querySelector(".profile__tag");
+const profileFormElement = document.querySelector(".modal__container");
 
-const formInputName = document.querySelector("#name");
-const formInputTag = document.querySelector("#about-me");
-
-formInputName.value = profileName.textContent;
-formInputTag.value = profileTag.textContent;
-
-const profileFormElement = document.querySelector(".modal__form");
-
-function handleProfileSubmit(e) {
+function handleProfileFormSubmit(e) {
   e.preventDefault();
 
   profileName.textContent = formInputName.value;
@@ -62,13 +60,14 @@ function handleProfileSubmit(e) {
   toggleModal();
 }
 
-profileFormElement.addEventListener("submit", handleProfileSubmit);
+profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 function getCardElement(data) {
   const cardTemplate = document.querySelector("#card-element").content;
+
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
 
-  const cardTitle = cardElement.querySelector(".card__description");
+  const cardTitle = cardElement.querySelector(".card__title");
   const cardImage = cardElement.querySelector(".card__image");
 
   cardTitle.textContent = data.name;
@@ -80,6 +79,7 @@ function getCardElement(data) {
 
 function createCardsList(card) {
   const cardsList = document.querySelector(".cards__list");
+
   const newCardElement = getCardElement(card);
 
   cardsList.prepend(newCardElement);

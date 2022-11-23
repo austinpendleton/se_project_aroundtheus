@@ -47,7 +47,17 @@
           ></button>
         </section>
         <section class="cards page__section">
-          <ul class="cards__list"></ul>
+          <ul class="cards__list">
+            <template id="card-element">
+              <li class="card">
+                <img class="card__image" />
+                <div class="card__description">
+                  <h2 class="card__title"></h2>
+                  <button class="card__like-button" type="button"></button>
+                </div>
+              </li>
+            </template>
+          </ul>
         </section>
       </main>
       <footer class="footer page__section">
@@ -55,20 +65,22 @@
       </footer>
 
       <div class="modal">
-        <button class="modal-button" type="button"></button>
+        <button class="modal__button" type="button"></button>
         <form class="modal__container" id="edit-modal-form">
           <h2 class="modal__container-title">Edit Profile</h2>
           <input
-            name="name"
+            name="profile__title"
             class="modal__container-name"
             placeholder="Name"
             type="text"
+            id="name"
           />
           <input
-            name="description"
+            name="profile__subheading"
             class="modal__container-description"
             placeholder="Description"
             type="text"
+            id="about-me"
           />
           <button class="modal__container-button">Save</button>
         </form>
