@@ -13,7 +13,7 @@
   pointer-events: none;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
-.modal__opened {
+.modal_opened {
   visibility: visible;
   opacity: 1;
   pointer-events: all;
@@ -28,11 +28,12 @@
   height: 40px;
   width: 40px;
   cursor: pointer;
-  margin-bottom: 370px;
-  margin-left: 465px;
+  top: -40px;
+  right: -40px;
 }
 .modal__container {
   display: flex;
+  position: relative;
   flex-direction: column;
   background: #ffffff;
   border-radius: 10px;
@@ -104,15 +105,20 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .modal-button {
+  .modal__button {
     margin-left: 256px;
-    margin-bottom: 13.62px;
+    margin-bottom: 361px;
     height: 26px;
     width: 26px;
+    background-size: 26px 26px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: -40px;
   }
   .modal__container {
     max-width: 282px;
-    height: 322px;
+    max-height: 310px;
   }
   .modal__container-title {
     font-size: 18px;
@@ -126,9 +132,12 @@
   .modal__container-description {
     font-size: 14px;
     margin: 0 22px 0 22px;
+    padding-top: 13px;
   }
   .modal__container-button {
-    margin: 45px 22px 0 22px;
+    margin: 45px 22px 25px;
     height: 46px;
+    width: 238px;
+    padding: 0;
   }
 }

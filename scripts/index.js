@@ -37,9 +37,9 @@ const formInputName = document.querySelector("#name");
 const formInputTag = document.querySelector("#about-me");
 
 function toggleModal() {
-  modal.classList.toggle("modal__opened");
+  modal.classList.toggle("modal_opened");
 
-  if (modal.classList.contains("modal__opened")) {
+  if (modal.classList.contains("modal_opened")) {
     formInputName.value = profileName.textContent;
     formInputTag.value = profileTag.textContent;
   }
@@ -77,7 +77,7 @@ function getCardElement(data) {
   return cardElement;
 }
 
-function createCardsList(card) {
+function prependCard(card) {
   const cardsList = document.querySelector(".cards__list");
 
   const newCardElement = getCardElement(card);
@@ -85,4 +85,4 @@ function createCardsList(card) {
   cardsList.prepend(newCardElement);
 }
 
-initialCards.forEach(createCardsList);
+initialCards.forEach(prependCard);
