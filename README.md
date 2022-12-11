@@ -10,7 +10,7 @@
 
 This project was made by Austin Pendleton, a student with Practicum's Software Engineer Program. This project was made following a design on Figma using HTML and CSS techniques.
 
-What made this project unique from our previous projects was we were tasked with making this page correctly display on popular screen sizes.
+What made this project unique from our previous projects was we were tasked with making this page correctly display on popular screen sizes and not ha some functionality!
 
 **Figma**
 
@@ -23,6 +23,8 @@ What made this project unique from our previous projects was we were tasked with
 Currently the landing page doesn't have much function besides the awesome design to display some images. But we will building off of this design in future projects to make it a more functional platform!
 
 UPDATE: The page now enables you to edit the profile name and subheading!
+UPDATE 2.0: The page not enables you to add and delete images!
 
 <img src= "./images/full-site-screenshot.png">
 <img src= "./images/mobile-site-screenshot.png">
+<img src= "./images/screenshot-add-photo-1.png">
