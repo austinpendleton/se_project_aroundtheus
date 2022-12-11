@@ -2,152 +2,149 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Austin Pendleton" />
-    <meta
-      name="description"
-      content="Our next Practicum project, a landing page to post images."
-    />
-    <meta
-      name="keywords"
-      content="around the US, Yosemite Valley, Bald Mountains, Latemar, Lake Louise, Vanoise National Park, Lago di Braies"
-    />
-
-    <title>Around the US</title>
+    <title>Project Around The US</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
-
   <body class="page">
-    <div class="page__content">
-      <header class="header page__section">
-        <img
-          src="./images/Vector.svg"
-          alt="Around the US logo"
-          class="header__logo"
-        />
-      </header>
-      <main>
-        <section class="profile page__section">
+    <header class="header">
+      <img
+        src="./images/Vector.svg"
+        alt="Around The US logo"
+        class="header__logo"
+      />
+    </header>
+
+    <main>
+      <section class="profile">
+        <div class="profile__left">
           <img
             src="./images/jacques-cousteau.jpg"
-            class="profile__image"
-            alt="Jacques Cousteau"
+            alt="jacques cousteau profile image"
+            class="profile__avatar"
           />
-          <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
-            <button type="button" class="profile__edit-button"></button>
-            <p class="profile__subheading">Explorer</p>
-          </div>
-
-          <button
-            class="profile__add-button"
-            type="button"
-            aria-label="add content button"
-          ></button>
-        </section>
-        <section class="cards page__section">
-          <ul class="cards__list">
-            <template id="card-element">
-              <li class="card">
-                <button
-                  class="card__delete"
-                  aria-label="delete button"
-                  type="button"
-                ></button>
-                <img class="card__image" alt="Yosemite" src="test" />
-                <div class="card__description">
-                  <h2 class="card__title">Sample</h2>
-                  <button
-                    class="card__like-button"
-                    type="button"
-                    aria-label="like button"
-                  ></button>
-                </div>
-              </li>
-            </template>
-          </ul>
-        </section>
-        <div class="modal" id="preview">
-          <div class="modal__preview">
-            <button
-              type="button"
-              id="preview-close"
-              class="modal__close"
-              src="./images/Close Icon.png"
-            ></button>
-            <img src="test" class="modal__preview-image" />
-            <p class="modal__caption"></p>
-          </div>
         </div>
-      </main>
-      <footer class="footer page__section">
-        <p class="footer__copyright">&copy; 2022 Around The U.S.</p>
-      </footer>
+        <div class="profile__center">
+          <h1 class="profile__title">Jacques Cousteau</h1>
+          <p class="profile__subtitle">Explorer</p>
+        </div>
+        <button type="button" class="profile__edit">
+          <img
+            src="./images/pencil2.svg"
+            alt="profile edit icon pencil"
+            class="profile__icon-pencil"
+          />
+        </button>
+        <button type="button" class="profile__add" id="add-button">
+          <img
+            src="./images/plus.svg"
+            alt="gallery add image plus"
+            class="profile__icon-plus"
+          />
+        </button>
+      </section>
 
-      <div class="modal">
-        <form class="modal__container" id="edit-modal-form">
-          <button class="modal__button" type="button"></button>
-          <h2 class="modal__container-title">Edit Profile</h2>
+      <div class="modal" id="edit-modal">
+        <form class="modal__container" id="modal-profile-form">
+          <button class="modal__close" type="button">
+            <img
+              class="modal__close-img"
+              src="./images/Close Icon.png"
+              alt="close button icon"
+            />
+          </button>
+          <p class="modal__title">Edit profile</p>
           <input
-            name="profile__title"
-            class="modal__container-name"
+            class="modal__name"
+            type="text"
+            name="title"
             placeholder="Name"
-            type="text"
-            id="name"
           />
           <input
-            name="profile__subheading"
-            class="modal__container-description"
-            placeholder="Description"
+            class="modal__description"
             type="text"
-            id="about-me"
+            name="description"
+            placeholder="Description"
           />
-          <button class="modal__container-button">Save</button>
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
-    </div>
-    <div class="modal" id="add">
-      <div class="modal__container">
-        <button
-          id="modal-close"
-          type="button"
-          src="./images/Close Icon.png"
-          class="modal__close js-close"
-        ></button>
-        <form class="modal__form" id="add-form">
-          <fieldset class="modal__fieldset">
-            <h2 class="modal__heading">New Place</h2>
-            <label for="name" class="modal__label">
-              <input
-                class="modal__container-name"
-                placehold="Title"
-                id="title"
-                minlength="2"
-                maxlength="30"
-                required
-              />
-              <span class="modal__input-error title-error"></span>
-            </label>
-            <label for="subtitle" class="modal__label">
-              <input
-                class="modal__container-name"
-                id="link"
-                type="url"
-                placeholder="Image Link"
-                required
-              />
-              <span class="modal__input-error link-error"></span>
-            </label>
-          </fieldset>
-          <fieldset class="modal__fieldset">
-            <button class="modal__button" id="create-button" type="submit">
-              Create
-            </button>
-          </fieldset>
+
+      <div class="modal" id="add-card-modal">
+        <form class="modal__container" id="add-card-form">
+          <button class="modal__close" id="close-button" type="button">
+            <img
+              class="modal__close-img"
+              src="./images/Close Icon.png"
+              alt="close button icon"
+            />
+          </button>
+          <p class="modal__title">New Place</p>
+          <input
+            class="modal__name"
+            type="text"
+            name="title"
+            placeholder="Title"
+          />
+          <input
+            class="modal__description"
+            type="text"
+            name="link"
+            placeholder="Image link"
+          />
+          <button class="modal__button" type="submit">Create</button>
         </form>
       </div>
-    </div>
+
+      <div class="modal" id="image-modal">
+        <div class="modal__image-container" id="image-template">
+          <button class="modal__image-close" id="image-close" type="button">
+            <img
+              class="modal__close-img"
+              src="./images/Close Icon.png"
+              alt="close button icon"
+            />
+          </button>
+          <img class="modal__image" src="" alt="" />
+          <p class="modal__image-title"></p>
+        </div>
+      </div>
+
+      <section class="gallery">
+        <div class="gallery__cards">
+          <template id="card-template">
+            <div class="card">
+              <button type="button" class="card__delete">
+                <img
+                  class="card__trashtop-icon"
+                  src="./images/topoftrash.svg"
+                  alt="top of trash can icon"
+                />
+                <img
+                  class="card__trashbottom-icon"
+                  src="./images/bottomoftrash.svg"
+                  alt="bottom of trash can icon"
+                />
+              </button>
+              <img class="card__image" src="" alt="" />
+              <div class="card__info">
+                <h2 class="card__title"></h2>
+                <button type="button" class="card__heart">
+                  <img
+                    src="./images/like-button.svg"
+                    class="card__button"
+                    alt="heart-icon"
+                  />
+                </button>
+              </div>
+            </div>
+          </template>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2022 Around The U.S.</p>
+    </footer>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

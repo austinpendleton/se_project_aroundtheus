@@ -1,66 +1,73 @@
 .card {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  border-radius: 10px;
-}
-.card__image {
-  height: 282px;
   width: 282px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }
-.card__description {
+
+.card__title {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.card__info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  color: black;
+  background-color: #fff;
+  color: #111;
   padding-top: 25px;
   padding-bottom: 25px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 0px 0px 10px 10px;
 }
+
+.card__image {
+  border-radius: 10px 10px 0px 0px;
+  height: 282px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.card__heart {
+  margin-right: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.card__heart:hover {
+  opacity: 0.5;
+}
+
+.card__heart_active {
+  background-image: url(../images/heartclick.svg);
+  background-repeat: no-repeat;
+}
+
+.card__heart_active:hover {
+  opacity: 0.5;
+}
+
 .card__delete {
-  background: transparent url(../images/trash.svg) center no-repeat;
-  margin-top: 18px;
-  margin-left: 249px;
-  padding: 0;
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: none;
+  padding: 0;
+  margin-top: 18px;
+  margin-left: 249px;
+  background-color: transparent;
 }
+
 .card__delete:hover {
   opacity: 0.6;
   cursor: pointer;
-}
-.card__like-button {
-  background: transparent url(../images/like-button.svg) center no-repeat;
-  width: 21px;
-  height: 18px;
-  border: none;
-  flex-shrink: 0;
-}
-.card__like-button:hover {
-  cursor: pointer;
-  opacity: 0.5;
-}
-.card__like-active {
-  background: url(../images/heartclick.svg);
-}
-.card__like-active:hover {
-  opacity: 0.5;
-}
-.card__title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-family: "Inter", Arial, sans-serif;
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 29px;
-  margin: 0;
 }
