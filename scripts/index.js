@@ -25,12 +25,15 @@ const initialCards = [
   },
 ];
 
+//declaring variables
 const modalEditOpen = document.querySelector(".profile__edit");
 const modalEditPopup = document.querySelector("#edit-modal");
 const modalEditClose = modalEditPopup.querySelector(".modal__close");
+
 const modalForm = document.querySelector("#modal-profile-form");
 const modalEditTitle = document.querySelector(".profile__title");
 const modalEditDescription = document.querySelector(".profile__subtitle");
+
 const modalTitleInput = modalForm.querySelector(".modal__name");
 const modalDescriptionInput = modalForm.querySelector(".modal__description");
 
@@ -41,6 +44,7 @@ const cardAddForm = document.querySelector("#add-card-form");
 
 const imagePopup = document.querySelector("#image-modal");
 
+//functions toggle modal
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
@@ -53,6 +57,7 @@ function renderCard(cardElement, container) {
   container.prepend(cardElement);
 }
 
+//card data add heart button and delete button
 function getCardView(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
 
@@ -136,7 +141,7 @@ cardAddForm.addEventListener("submit", function (event) {
   closePopup(cardAddPopup);
 });
 
-const cardGallery = document.querySelector(".gallery__cards");
+const cardGallery = document.querySelector(".cards__gallery");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
