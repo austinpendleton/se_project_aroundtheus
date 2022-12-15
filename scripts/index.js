@@ -33,6 +33,7 @@ const profileEditClose = profileEditPopup.querySelector(".modal__close");
 const profileForm = document.querySelector("#modal-profile-form");
 const profileEditTitle = document.querySelector(".profile__title");
 const profileEditDescription = document.querySelector(".profile__subtitle");
+const imagePreviewClose = document.querySelector("#image-close");
 
 const profileTitleInput = profileForm.querySelector(".modal__name");
 const profileDescriptionInput = profileForm.querySelector(
@@ -81,7 +82,6 @@ function getCardView(cardData) {
   });
 
   const imagePreview = cardElement.querySelector(".card__image");
-  const imagePreviewClose = document.querySelector("#image-close");
 
   imagePreview.addEventListener("click", function () {
     openPopup(imagePopup);
@@ -92,12 +92,12 @@ function getCardView(cardData) {
     imageTitle.textContent = cardData.name;
   });
 
-  imagePreviewClose.addEventListener("click", function () {
-    closePopup(imagePopup);
-  });
-
   return cardElement;
 }
+
+imagePreviewClose.addEventListener("click", function () {
+  closePopup(imagePopup);
+});
 
 profileEditOpen.addEventListener("click", function () {
   profileTitleInput.value = profileEditTitle.textContent;
