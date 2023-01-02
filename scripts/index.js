@@ -50,11 +50,54 @@ const imagePopup = document.querySelector("#image-modal");
 //functions toggle modal
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keyup", handleEscUp);
 }
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keyup", handleEscUp);
 }
+
+//escape key
+const handleEscUp = (evt) => {
+  evt.preventDefault();
+  isEscEvent(evt, closePopup);
+};
+
+const isEscEvent = (evt, action) => {
+  const activePopup = document.querySelector(".modal_opened");
+  if (evt.key === "Escape") {
+    action(activePopup);
+  }
+};
+
+//click event
+profileEditOpen.addEventListener("mousedown", (evt) => {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closePopup(profileEditOpen);
+  }
+});
+
+/*cardAddPopup.addEventListener("mousedown", (evt) => {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closePopup(cardAddPopup);
+  }
+});*/
+
+imagePopup.addEventListener("mousedown", (evt) => {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closePopup(imagePopup);
+  }
+});
 
 function renderCard(cardElement, container) {
   container.prepend(cardElement);
