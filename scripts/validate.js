@@ -87,7 +87,7 @@ const enableValidation = ({ formSelector, ...rest }) => {
 //enabling validation
 const validationConfig = {
   formSelector: ".modal__container",
-  inputSelector: ".popup_input",
+  inputSelector: ".popup__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: ".modal__button_disabled",
   inputErrorClass: "popup__input_type_error",
