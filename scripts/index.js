@@ -72,23 +72,23 @@ const isEscEvent = (evt, action) => {
 };
 
 //click event
-profileEditOpen.addEventListener("mousedown", (evt) => {
+profileEditPopup.addEventListener("mousedown", (evt) => {
   if (
     evt.target.classList.contains("modal") ||
     evt.target.classList.contains("modal__close")
   ) {
-    closePopup(profileEditOpen);
+    closePopup(profileEditPopup);
   }
 });
 
-/*cardAddPopup.addEventListener("mousedown", (evt) => {
+cardAddPopup.addEventListener("mousedown", (evt) => {
   if (
     evt.target.classList.contains("modal") ||
     evt.target.classList.contains("modal__close")
   ) {
     closePopup(cardAddPopup);
   }
-});*/
+});
 
 imagePopup.addEventListener("mousedown", (evt) => {
   if (

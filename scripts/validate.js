@@ -4,7 +4,6 @@ const showInputError = (
   errorMessage,
   { errorClass, inputErrorClass }
 ) => {
-  console.log("test");
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
   errorElement.textContent = errorMessage;
@@ -24,7 +23,6 @@ const hideInputError = (
 };
 
 const checkInputValidity = (formElement, inputElement, enums) => {
-  console.log(inputElement);
   if (!inputElement.validity.valid) {
     showInputError(
       formElement,
@@ -92,8 +90,8 @@ const validationConfig = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: ".modal__button_disabled",
-  inputErrorClass: ".popup__input_type_error",
-  errorClass: ".popup__error_visible",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
 };
 
 enableValidation(validationConfig);

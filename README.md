@@ -23,7 +23,10 @@ What made this project unique from our previous projects was we were tasked with
 Currently the landing page doesn't have much function besides the awesome design to display some images. But we will building off of this design in future projects to make it a more functional platform!
 
 UPDATE: The page now enables you to edit the profile name and subheading!
+
 UPDATE 2.0: The page not enables you to add and delete images!
+
+UPDATE 3.0: Form validation! The popup windows now flag the user if the user input doesn't meet a certain criteria. You can also close the popup windows by pressing the "ESC" key or clicking outside the popup area.
 
 <img src= "./images/full-site-screenshot.png">
 <img src= "./images/mobile-site-screenshot.png">

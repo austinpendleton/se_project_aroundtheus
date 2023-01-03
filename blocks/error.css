@@ -1,10 +1,7 @@
 .popup__error {
   font-size: 12px;
   line-height: 15px;
-  position: absolute;
-  left: 0;
-  transition: opacity 0.3s;
-  top: calc(100% + 5px);
+  margin-left: 15px;
   color: #ff0000;
 }
 
@@ -24,8 +21,6 @@
 }
 
 .popup__error_visible {
-  font-size: 12px;
-  line-height: 15px;
-  color: rgba(255, 0, 0, 1);
-  margin: 0;
+  opacity: 1;
+  margin: 5px 0 0 36px;
 }
