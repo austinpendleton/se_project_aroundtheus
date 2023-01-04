@@ -36,9 +36,7 @@ const checkInputValidity = (formElement, inputElement, enums) => {
 };
 
 const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
+  inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
 const disableSubmitButton = (buttonElement, inactiveButtonClass) => {

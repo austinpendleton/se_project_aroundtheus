@@ -71,33 +71,20 @@ const isEscEvent = (evt, action) => {
   }
 };
 
-//click event
-profileEditPopup.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closePopup(profileEditPopup);
-  }
-});
+//close on click
 
-cardAddPopup.addEventListener("mousedown", (evt) => {
+function closePopupOnRemoteClick(evt) {
   if (
-    evt.target.classList.contains("modal") ||
+    evt.target === evt.currentTarget ||
     evt.target.classList.contains("modal__close")
   ) {
-    closePopup(cardAddPopup);
+    closePopup(evt.target);
   }
-});
+}
 
-imagePopup.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closePopup(imagePopup);
-  }
-});
+profileEditPopup.addEventListener("mousedown", closePopupOnRemoteClick);
+cardAddPopup.addEventListener("mousedown", closePopupOnRemoteClick);
+imagePopup.addEventListener("mousedown", closePopupOnRemoteClick);
 
 function renderCard(cardElement, container) {
   container.prepend(cardElement);
@@ -125,11 +112,12 @@ function getCardView(cardData) {
   });
 
   const imagePreview = cardElement.querySelector(".card__image");
+  const imageElement = document.querySelector(".modal__image");
+  const imageTitle = document.querySelector(".modal__image-title");
 
   imagePreview.addEventListener("click", function () {
     openPopup(imagePopup);
-    const imageElement = document.querySelector(".modal__image");
-    const imageTitle = document.querySelector(".modal__image-title");
+
     imageElement.src = cardData.link;
     imageElement.alt = cardData.name;
     imageTitle.textContent = cardData.name;
@@ -175,10 +163,10 @@ profileForm.addEventListener("submit", function (event) {
 
 cardAddForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const title = event.target.title.value;
+  const name = event.target.title.value;
   const link = event.target.link.value;
   const cardView = getCardView({
-    title,
+    name,
     link,
   });
   renderCard(cardView, cardGallery);
