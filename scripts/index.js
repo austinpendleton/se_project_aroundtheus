@@ -50,34 +50,20 @@ const imagePopup = document.querySelector("#image-modal");
 //functions toggle modal
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", handleEscUp);
+  document.removeEventListener("keyup", performActionOnEscape);
 }
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keyup", handleEscUp);
+  document.addEventListener("keyup", performActionOnEscape);
 }
 
-//escape key
-const handleEscUp = (evt) => {
-  evt.preventDefault();
-  isEscEvent(evt, closePopup);
-};
-
-const isEscEvent = (evt, action) => {
-  const activePopup = document.querySelector(".modal_opened");
+function performActionOnEscape(evt) {
   if (evt.key === "Escape") {
-    action(activePopup);
+    const activePopup = document.querySelector(".modal_opened");
+    closePopup(activePopup);
   }
-};
-
-/* function handleEscapeClose(profileEditPopup, cardAddPopup) {
-  profileEditClose.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      closePopup(profileEditPopup, cardAddPopup);
-    }
-  });
-} */
+}
 
 //close on click
 

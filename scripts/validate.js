@@ -36,7 +36,7 @@ const checkInputValidity = (formElement, inputElement, enums) => {
 };
 
 const hasInvalidInput = (inputList) => {
-  inputList.some((inputElement) => !inputElement.validity.valid);
+  return inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
 const disableSubmitButton = (buttonElement, inactiveButtonClass) => {
@@ -101,7 +101,7 @@ const validationConfig = {
   formSelector: ".modal__container",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
-  inactiveButtonClass: ".modal__button_disabled",
+  inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
