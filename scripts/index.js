@@ -71,6 +71,14 @@ const isEscEvent = (evt, action) => {
   }
 };
 
+/* function handleEscapeClose(profileEditPopup, cardAddPopup) {
+  profileEditClose.addEventListener("keydown", function (evt) {
+    if (evt.key === "Escape") {
+      closePopup(profileEditPopup, cardAddPopup);
+    }
+  });
+} */
+
 //close on click
 
 function closePopupOnRemoteClick(evt) {
