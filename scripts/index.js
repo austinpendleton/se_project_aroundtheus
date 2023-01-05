@@ -44,21 +44,24 @@ const cardAddPopup = document.querySelector("#add-card-modal");
 const cardAddButton = document.querySelector("#add-button");
 const cardAddCloseButton = cardAddPopup.querySelector("#close-button");
 const cardAddForm = document.querySelector("#add-card-form");
+const cardAddSubmitButton = document.querySelector("#card-submit-button");
 
 const imagePopup = document.querySelector("#image-modal");
 
 //functions toggle modal
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", performActionOnEscape);
+  document.removeEventListener("keyup", closePopupOnEscape);
+  modal.addEventListener("mousedown", closePopupOnRemoteClick);
 }
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keyup", performActionOnEscape);
+  document.addEventListener("keyup", closePopupOnEscape);
+  modal.addEventListener("mousedown", closePopupOnRemoteClick);
 }
 
-function performActionOnEscape(evt) {
+function closePopupOnEscape(evt) {
   if (evt.key === "Escape") {
     const activePopup = document.querySelector(".modal_opened");
     closePopup(activePopup);
@@ -75,10 +78,6 @@ function closePopupOnRemoteClick(evt) {
     closePopup(evt.target);
   }
 }
-
-profileEditPopup.addEventListener("mousedown", closePopupOnRemoteClick);
-cardAddPopup.addEventListener("mousedown", closePopupOnRemoteClick);
-imagePopup.addEventListener("mousedown", closePopupOnRemoteClick);
 
 function renderCard(cardElement, container) {
   container.prepend(cardElement);
@@ -168,6 +167,12 @@ cardAddForm.addEventListener("submit", function (event) {
   closePopup(cardAddPopup);
 
   cardAddForm.reset();
+
+  toggleButtonState(
+    [event.target.title, event.target.link],
+    cardAddSubmitButton,
+    validationConfig.inactiveButtonClass
+  );
 });
 
 const cardGallery = document.querySelector(".cards__gallery");
