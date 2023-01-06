@@ -135,6 +135,10 @@ profileEditClose.addEventListener("click", function () {
 });
 
 cardAddButton.addEventListener("click", function () {
+  disableSubmitButton(
+    cardAddSubmitButton,
+    validationConfig.inactiveButtonClass
+  );
   openPopup(cardAddPopup);
 });
 
