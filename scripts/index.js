@@ -135,11 +135,9 @@ profileEditClose.addEventListener("click", function () {
 });
 
 cardAddButton.addEventListener("click", function () {
-  disableSubmitButton(
-    cardAddSubmitButton,
-    validationConfig.inactiveButtonClass
-  );
   openPopup(cardAddPopup);
+
+  toggleButtonState(cardAddSubmitButton, validationConfig.inactiveButtonClass);
 });
 
 cardAddCloseButton.addEventListener("click", function () {
@@ -166,17 +164,12 @@ cardAddForm.addEventListener("submit", function (event) {
     name,
     link,
   });
+
   renderCard(cardView, cardGallery);
 
   closePopup(cardAddPopup);
 
   cardAddForm.reset();
-
-  toggleButtonState(
-    [event.target.title, event.target.link],
-    cardAddSubmitButton,
-    validationConfig.inactiveButtonClass
-  );
 });
 
 const cardGallery = document.querySelector(".cards__gallery");
