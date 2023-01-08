@@ -1,3 +1,20 @@
+const validationConfig = {
+  formSelector: ".modal__container",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+const formElement = document.querySelector(".modal");
+const buttonElement = formElement.querySelector(
+  validationConfig.submitButtonSelector
+);
+
+const inputList = Array.from(
+  formElement.querySelectorAll(validationConfig.inputSelector)
+);
+
 const showInputError = (
   formElement,
   inputElement,
@@ -61,9 +78,6 @@ const setEventListeners = (
   formElement,
   { inputSelector, submitButtonSelector, inactiveButtonClass, ...rest }
 ) => {
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  const buttonElement = formElement.querySelector(submitButtonSelector);
-
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(formElement, inputElement, rest);
@@ -83,13 +97,5 @@ const enableValidation = ({ formSelector, ...rest }) => {
 };
 
 //enabling validation
-const validationConfig = {
-  formSelector: ".modal__container",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
 
 enableValidation(validationConfig);

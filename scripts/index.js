@@ -136,8 +136,14 @@ profileEditClose.addEventListener("click", function () {
 
 cardAddButton.addEventListener("click", function () {
   openPopup(cardAddPopup);
+  // inputList is not defined, but it's defined ion the validation.js file on the row 64. You need to do the same either here,
+  // or to make a one generic source
 
-  toggleButtonState(cardAddSubmitButton, validationConfig.inactiveButtonClass);
+  toggleButtonState(
+    inputList,
+    buttonElement,
+    validationConfig.inactiveButtonClass
+  );
 });
 
 cardAddCloseButton.addEventListener("click", function () {
