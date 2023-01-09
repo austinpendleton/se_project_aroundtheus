@@ -6,6 +6,7 @@ const validationConfig = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
+
 const formElement = document.querySelector(".modal");
 const buttonElement = formElement.querySelector(
   validationConfig.submitButtonSelector
@@ -22,7 +23,7 @@ const showInputError = (
   { errorClass, inputErrorClass }
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add(inputErrorClass);
+  inputElement.classList.add(validationConfig.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(errorClass);
 };
@@ -76,11 +77,17 @@ const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
 
 const setEventListeners = (
   formElement,
+
   { inputSelector, submitButtonSelector, inactiveButtonClass, ...rest }
 ) => {
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+
+  const buttonElement = formElement.querySelector(submitButtonSelector);
+
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(formElement, inputElement, rest);
+
       toggleButtonState(inputList, buttonElement, inactiveButtonClass);
     });
   });
