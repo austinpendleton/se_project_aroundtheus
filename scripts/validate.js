@@ -12,9 +12,7 @@ const buttonElement = formElement.querySelector(
   validationConfig.submitButtonSelector
 );
 
-const inputList = Array.from(
-  formElement.querySelectorAll(validationConfig.inputSelector)
-);
+const inputList = Array.from(formElement.querySelectorAll(".modal__input"));
 
 const showInputError = (
   formElement,

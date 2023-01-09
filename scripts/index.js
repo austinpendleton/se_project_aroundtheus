@@ -139,7 +139,7 @@ cardAddButton.addEventListener("click", function (event) {
   openPopup(cardAddPopup);
 
   toggleButtonState(
-    inputList,
+    [...cardAddForm.querySelectorAll("input")],
     cardAddSubmitButton,
     validationConfig.inactiveButtonClass
   );
