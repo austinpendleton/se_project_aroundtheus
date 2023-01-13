@@ -1,11 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import {
-  closePopup,
-  openPopup,
-  closePopupOnEscape,
-  closePopupOnRemoteClick,
-} from "./utils.js";
+import { closePopup, openPopup } from "./utils.js";
 
 const initialCards = [
   {
@@ -38,15 +33,12 @@ const initialCards = [
 
 /* Cards */
 
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
 const cardGallery = document.querySelector(".cards__gallery");
 
 /* Buttons */
 
 const cardAddButton = document.querySelector("#add-button");
 
-const cardAddSubmitButton = document.querySelector("#card-submit-button");
 const profileEditOpen = document.querySelector(".profile__edit");
 
 const imagePreviewClose = document.querySelector("#image-close");
@@ -90,43 +82,7 @@ const addFormValidator = new FormValidator(validationSettings, cardAddForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-//functions toggle modal
-
-//card data add heart button and delete button
-// function getCardView(cardData) {
-//   const cardElement = cardTemplate.cloneNode(true);
-
-//   const cardImage = cardElement.querySelector(".card__image");
-//   const cardTitle = cardElement.querySelector(".card__title");
-//   cardImage.src = cardData.link;
-//   cardImage.alt = cardData.name;
-//   cardTitle.textContent = cardData.name;
-
-//   const cardHeartButton = cardElement.querySelector(".card__button");
-//   cardHeartButton.addEventListener("click", function () {
-//     cardHeartButton.classList.toggle("card__heart_active");
-//   });
-
-//   const cardDeleteButton = cardElement.querySelector(".card__delete");
-//   cardDeleteButton.addEventListener("click", function () {
-//     const cardItem = cardDeleteButton.closest(".card");
-//     cardItem.remove();
-//   });
-
-//   const imagePreview = cardElement.querySelector(".card__image");
-//   const imageElement = document.querySelector(".modal__image");
-//   const imageTitle = document.querySelector(".modal__image-title");
-
-//   imagePreview.addEventListener("click", function () {
-//     openPopup(imagePopup);
-
-//     imageElement.src = cardData.link;
-//     imageElement.alt = cardData.name;
-//     imageTitle.textContent = cardData.name;
-//   });
-
-//   return cardElement;
-// }
+/* Toggle Functions */
 
 imagePreviewClose.addEventListener("click", function () {
   closePopup(imagePopup);
@@ -145,18 +101,9 @@ profileEditClose.addEventListener("click", function () {
 
 cardAddButton.addEventListener(
   "click",
-  () =>
-    // event.preventDefault();
-
-    openPopup(cardAddPopup),
+  () => openPopup(cardAddPopup),
   addFormValidator.resetValidation()
 );
-
-// this._toggleButtonState(
-//   [...cardAddForm.querySelectorAll("input")],
-//   cardAddSubmitButton,
-//   validationSettings.inactiveButtonClass
-// );
 
 cardAddCloseButton.addEventListener("click", function () {
   closePopup(cardAddPopup);
@@ -174,6 +121,8 @@ profileForm.addEventListener("submit", function (event) {
   closePopup(profileEditPopup);
 });
 
+/* Render Card Functions */
+
 function createCard() {
   const createdCard = {
     name: cardNameField.value,
@@ -185,29 +134,12 @@ function createCard() {
 
 cardAddForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  // const name = event.target.title.value;
-  // const link = event.target.link.value;
-  // const cardView = getCardView({
-  //   name,
-  //   link,
-  // });
 
   cardGallery.prepend(createCard().getElement());
   closePopup(cardAddPopup);
   cardAddForm.reset();
   addFormValidator.resetValidation();
-
-  // getElement(cardView, cardGallery);
-
-  // closePopup(cardAddPopup);
-
-  // cardAddForm.reset();
 });
-
-// initialCards.forEach(function (cardData) {
-//   const cardView = getElement(cardData);
-//   renderCard(cardView, cardGallery);
-// });
 
 initialCards.forEach(function (cardData) {
   const card = new Card(cardData, cardSelector);

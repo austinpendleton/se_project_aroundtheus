@@ -21,7 +21,7 @@ class Card {
   _handleLikeButton() {
     this._element
       .querySelector(".card__button")
-      .classList.toggle(".card__heart_active");
+      .classList.toggle("card__heart_active");
   }
   _handleDeleteButton() {
     this._element.querySelector(".card__delete").closest(".card").remove();

@@ -17,8 +17,6 @@ export function closePopupOnEscape(evt) {
   }
 }
 
-//close on click
-
 export function closePopupOnRemoteClick(evt) {
   if (
     evt.target === evt.currentTarget ||

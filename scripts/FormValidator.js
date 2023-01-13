@@ -1,13 +1,3 @@
-/* const settings = {
-  formSelector: ".modal__container",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-*/
-
 class FormValidator {
   constructor(settings, formElement) {
     this._inputSelector = settings.inputSelector;
@@ -31,12 +21,6 @@ class FormValidator {
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = " ";
   }
-
-  // _hasInvalidInput() {
-  //   return this._inputList.some((inputElement) => {
-  //     return !inputElement.validity.valid;
-  //   });
-  // }
 
   _hasInvalidInput(inputElement) {
     if (!inputElement.validity.valid) {
