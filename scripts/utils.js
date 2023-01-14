@@ -20,8 +20,8 @@ export function closePopupOnEscape(evt) {
 export function closePopupOnRemoteClick(evt) {
   if (
     evt.target === evt.currentTarget ||
-    evt.target.classList.contains("modal__close")
+    evt.target.classList.contains("modal__close-img")
   ) {
-    closePopup(evt.target);
+    closePopup(evt.currentTarget);
   }
 }

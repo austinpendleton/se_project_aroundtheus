@@ -84,10 +84,6 @@ addFormValidator.enableValidation();
 
 /* Toggle Functions */
 
-imagePreviewClose.addEventListener("click", function () {
-  closePopup(imagePopup);
-});
-
 profileEditOpen.addEventListener("click", function () {
   profileTitleInput.value = profileEditTitle.textContent;
   profileDescriptionInput.value = profileEditDescription.textContent;
@@ -95,18 +91,9 @@ profileEditOpen.addEventListener("click", function () {
   openPopup(profileEditPopup);
 });
 
-profileEditClose.addEventListener("click", function () {
-  closePopup(profileEditPopup);
-});
-
-cardAddButton.addEventListener(
-  "click",
-  () => openPopup(cardAddPopup),
-  addFormValidator.resetValidation()
-);
-
-cardAddCloseButton.addEventListener("click", function () {
-  closePopup(cardAddPopup);
+cardAddButton.addEventListener("click", () => {
+  openPopup(cardAddPopup);
+  addFormValidator.resetValidation();
 });
 
 profileForm.addEventListener("submit", function (event) {
@@ -138,7 +125,6 @@ cardAddForm.addEventListener("submit", function (event) {
   cardGallery.prepend(createCard().getElement());
   closePopup(cardAddPopup);
   cardAddForm.reset();
-  addFormValidator.resetValidation();
 });
 
 initialCards.forEach(function (cardData) {
