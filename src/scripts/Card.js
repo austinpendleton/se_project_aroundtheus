@@ -1,11 +1,12 @@
 import { openPopup } from "./utils.js";
 
 class Card {
-  constructor(cardData, cardSelector) {
+  constructor(cardData, cardSelector, handleCardClick) {
     this._name = cardData.name;
     this._link = cardData.link;
 
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
   _setEventListeners() {
     this._element
@@ -25,6 +26,9 @@ class Card {
   }
   _handleDeleteButton() {
     this._element.querySelector(".card__delete").closest(".card").remove();
+  }
+  _handleImagePopup() {
+    this._handleCardClick({ name: this._name, link: this._link });
   }
   _handlePreviewPicture() {
     this._preview = document.querySelector("#image-modal");
