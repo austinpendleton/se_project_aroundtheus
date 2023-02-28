@@ -1,7 +1,11 @@
 import "../pages/index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { closePopup, openPopup } from "../components/utils.js";
+import UserInfo from "../components/UserInfo.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import { config } from "webpack";
 
 const initialCards = [
   {
@@ -83,6 +87,13 @@ const addFormValidator = new FormValidator(validationSettings, cardAddForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
+// UserInfo callback
+
+const userInfo = new UserInfo({
+  profileNameSelector: config.profileNameSelector,
+  profileDescriptionSelector: config.profileDescriptionSelector,
+});
+
 /* Toggle Functions */
 
 profileEditOpen.addEventListener("click", function () {
@@ -120,6 +131,20 @@ function createCard() {
   return card;
 }
 
+// Section callback
+
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (data) => {
+      const card = createCard(data);
+      cardSection.addItem(card);
+    },
+  },
+  selectors.cardSection
+);
+cardSection.renderItems();
+
 cardAddForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -132,3 +157,28 @@ initialCards.forEach(function (cardData) {
   const card = new Card(cardData, cardSelector);
   cardGallery.prepend(card.getElement());
 });
+
+// PopupWithImage callback
+
+const previewPopup = new PopupWithImage(selectors.imagePreview);
+previewPopup.setEventListeners();
+
+// PopupWithForm callback
+
+const addCardPopup = new PopupWithForm({
+  popupSelector: "#add-modal",
+  handleFormSubmit: (data) => {
+    const card = createCard(data);
+    cardSection.addItem(card);
+    addCardPopup.close();
+  },
+});
+addCardPopup.setEventListeners();
+
+const userInfoPopup = new PopupWithForm({
+  popupSelector: "#edit-modal",
+  handleFormSubmit: (data) => {
+    userInfo.setProfileInfo(data.name, data.description);
+  },
+});
+userInfoPopup.setEventListeners();
