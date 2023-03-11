@@ -71,7 +71,7 @@ export const initialCards = [
 export const config = {
   cardNameField: "#card-name",
   cardLinkField: "#card-link",
-  profileTitleInput: ".modal__name",
+  profileTitleInput: ".modal__input",
   profileDescriptionInput: ".modal__description",
   imagePopup: "#image-modal",
   cardAddPopup: "#add-card-modal",

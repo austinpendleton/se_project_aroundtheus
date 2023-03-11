@@ -35,12 +35,23 @@ const userInfo = new UserInfo({
 const cardAddButton = document.querySelector("#add-button");
 const profileEditOpen = document.querySelector(".profile__edit");
 
-profileEditOpen.addEventListener("click", function () {
-  profileTitleInput.value = profileEditTitle.textContent;
-  profileDescriptionInput.value = profileEditDescription.textContent;
+// profileEditOpen.addEventListener("click", function () {
+//   profileTitleInput.value = profileEditTitle.textContent;
+//   profileDescriptionInput.value = profileEditDescription.textContent;
 
-  openPopup(config.profileEditPopup);
-});
+//   openPopup(config.profileEditPopup);
+// });
+function openProfileEditForm() {
+  userInfo.getUserInfo({
+    name: (config.profileTitleInput.value =
+      config.profileEditTitle.textContent),
+    description: (config.profileDescriptionInput.value =
+      config.profileEditDescription.textContent),
+  });
+
+  config.profileEditPopup.open();
+}
+profileEditOpen.addEventListener("click", openProfileEditForm);
 
 cardAddButton.addEventListener("click", () => {
   openPopup(cardAddPopup);
