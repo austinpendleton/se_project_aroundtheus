@@ -32,17 +32,20 @@ const userInfo = new UserInfo({
 
 /* Toggle Functions */
 
-// profileEditOpen.addEventListener("click", function () {
-//   profileTitleInput.value = profileEditTitle.textContent;
-//   profileDescriptionInput.value = profileEditDescription.textContent;
+const cardAddButton = document.querySelector("#add-button");
+const profileEditOpen = document.querySelector(".profile__edit");
 
-//   openPopup(profileEditPopup);
-// });
+profileEditOpen.addEventListener("click", function () {
+  profileTitleInput.value = profileEditTitle.textContent;
+  profileDescriptionInput.value = profileEditDescription.textContent;
 
-// cardAddButton.addEventListener("click", () => {
-//   openPopup(cardAddPopup);
-//   addFormValidator.resetValidation();
-// });
+  openPopup(config.profileEditPopup);
+});
+
+cardAddButton.addEventListener("click", () => {
+  openPopup(cardAddPopup);
+  addFormValidator.resetValidation();
+});
 
 // profileForm.addEventListener("submit", function (event) {
 //   event.preventDefault();
@@ -93,7 +96,7 @@ cardAddForm.addEventListener("submit", function (event) {
 
 // initialCards.forEach(function (cardData) {
 //   const card = new Card(cardData, config.cardSelector);
-//   cardGallery.prepend(card.getElement());
+//   config.cardGallery.prepend(card.getElement());
 // });
 
 // PopupWithImage callback
@@ -104,7 +107,7 @@ previewPopup.setEventListeners();
 // PopupWithForm callback
 
 const addCardPopup = new PopupWithForm({
-  popupSelector: "#add-modal",
+  popupSelector: "#add-card-modal",
   handleFormSubmit: (data) => {
     const card = createCard(data);
     cardSection.addItem(card);
