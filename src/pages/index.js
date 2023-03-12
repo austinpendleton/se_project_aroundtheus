@@ -10,7 +10,12 @@ import {
   initialCards,
   validationSettings,
 } from "../utils/constants.js";
-
+import {
+  closePopup,
+  openPopup,
+  closePopupOnEscape,
+  closePopupOnRemoteClick,
+} from "../utils/utils.js";
 //declaring variables
 
 /* Cards */
@@ -35,12 +40,13 @@ const userInfo = new UserInfo({
 const cardAddButton = document.querySelector("#add-button");
 const profileEditOpen = document.querySelector(".profile__edit");
 
-// profileEditOpen.addEventListener("click", function () {
-//   profileTitleInput.value = profileEditTitle.textContent;
-//   profileDescriptionInput.value = profileEditDescription.textContent;
+profileEditOpen.addEventListener("click", function () {
+  config.profileTitleInput.value = config.profileEditTitle.textContent;
+  config.profileDescriptionInput.value =
+    config.profileEditDescription.textContent;
 
-//   openPopup(config.profileEditPopup);
-// });
+  openPopup(config.profileEditPopup);
+});
 function openProfileEditForm() {
   userInfo.getUserInfo({
     name: (config.profileTitleInput.value =
@@ -49,12 +55,12 @@ function openProfileEditForm() {
       config.profileEditDescription.textContent),
   });
 
-  config.profileEditPopup.open();
+  openPopup(config.profileEditPopup);
 }
 profileEditOpen.addEventListener("click", openProfileEditForm);
 
 cardAddButton.addEventListener("click", () => {
-  openPopup(cardAddPopup);
+  openPopup(config.cardAddPopup);
   addFormValidator.resetValidation();
 });
 
@@ -86,7 +92,7 @@ cardAddButton.addEventListener("click", () => {
 const cardSection = new Section(
   { items: initialCards, renderer: renderCard },
 
-  config.cardSelector
+  config.cardGallery
 );
 cardSection.renderItems();
 
@@ -94,7 +100,7 @@ function renderCard(data) {
   const card = new Card(data, config.cardSelector, (data) => {
     previewPopup.open(data);
   });
-  return card.getElement();
+  cardSection.addItem(card.getElement());
 }
 
 cardAddForm.addEventListener("submit", function (event) {

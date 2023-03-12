@@ -1,18 +1,18 @@
 export function closePopup(modal) {
-  modal.classList.remove("modal_opened");
+  modal.classList.remove(".modal");
   document.removeEventListener("keyup", closePopupOnEscape);
   modal.addEventListener("mousedown", closePopupOnRemoteClick);
 }
 
 export function openPopup(modal) {
-  modal.classList.add("modal_opened");
+  modal.classList.add(".modal");
   document.addEventListener("keyup", closePopupOnEscape);
   modal.addEventListener("mousedown", closePopupOnRemoteClick);
 }
 
 export function closePopupOnEscape(evt) {
   if (evt.key === "Escape") {
-    const activePopup = document.querySelector(".modal_opened");
+    const activePopup = document.querySelector(".modal");
     closePopup(activePopup);
   }
 }
