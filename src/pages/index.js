@@ -25,25 +25,32 @@ const profileEditForm = profileModal.querySelector(config.formSelector);
 const editFormValidator = new FormValidator(config, profileEditForm);
 const addFormValidator = new FormValidator(config, cardAddForm);
 
+const cardAddButton = document.querySelector("#add-button");
+const profileEditOpen = document.querySelector(".profile__edit");
+const profileForm = document.querySelector("#modal-profile-form");
+
+const profileTitleInput = profileForm.querySelector("#owner-name");
+const profileEditTitle = document.querySelector(".profile__title");
+const profileDescriptionInput = profileForm.querySelector(
+  ".modal__description"
+);
+const profileEditDescription = document.querySelector(".profile__subtitle");
+
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 // UserInfo callback
 
 const userInfo = new UserInfo({
-  profileNameSelector: config.profileTitleInput,
-  profileDescriptionSelector: config.profileDescriptionInput,
+  profileNameSelector: profileTitleInput,
+  profileDescriptionSelector: profileDescriptionInput,
 });
 
 /* Toggle Functions */
 
-const cardAddButton = document.querySelector("#add-button");
-const profileEditOpen = document.querySelector(".profile__edit");
-
 profileEditOpen.addEventListener("click", function () {
-  config.profileTitleInput.value = config.profileEditTitle.textContent;
-  config.profileDescriptionInput.value =
-    config.profileEditDescription.textContent;
+  profileTitleInput.value = profileEditTitle.textContent;
+  profileDescriptionInput.value = profileEditDescription.textContent;
 
   openPopup(config.profileEditPopup);
 });
