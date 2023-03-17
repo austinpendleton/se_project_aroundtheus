@@ -52,22 +52,22 @@ profileEditOpen.addEventListener("click", function () {
   profileTitleInput.value = profileEditTitle.textContent;
   profileDescriptionInput.value = profileEditDescription.textContent;
 
-  openPopup(config.profileEditPopup);
+  userInfoPopup.open();
 });
-function openProfileEditForm() {
-  userInfo.getUserInfo({
-    name: (config.profileTitleInput.value =
-      config.profileEditTitle.textContent),
-    description: (config.profileDescriptionInput.value =
-      config.profileEditDescription.textContent),
-  });
+// function openProfileEditForm() {
+//   userInfo.getUserInfo({
+//     name: (config.profileTitleInput.value =
+//       config.profileEditTitle.textContent),
+//     description: (config.profileDescriptionInput.value =
+//       config.profileEditDescription.textContent),
+//   });
 
-  openPopup(config.profileEditPopup);
-}
-profileEditOpen.addEventListener("click", openProfileEditForm);
+//   userInfoPopup.open();
+// }
+// profileEditOpen.addEventListener("click", openProfileEditForm);
 
 cardAddButton.addEventListener("click", () => {
-  openPopup(config.cardAddPopup);
+  addCardPopup.open();
   addFormValidator.resetValidation();
 });
 
@@ -114,7 +114,7 @@ cardAddForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   cardGallery.prepend(createCard().getElement());
-  closePopup(cardAddPopup);
+  addCardPopup.close();
   cardAddForm.reset();
 });
 
