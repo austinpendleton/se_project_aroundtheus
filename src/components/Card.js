@@ -1,5 +1,3 @@
-import { openPopup } from "../utils/utils.js";
-
 class Card {
   constructor(cardData, cardSelector, handleCardClick) {
     this._name = cardData.name;
@@ -45,8 +43,6 @@ class Card {
 
     modalPreviewImage.setAttribute("alt", previewAlt);
     this._preview.querySelector(".modal__image-title").textContent = this._name;
-
-    openPopup(this._preview);
   }
 
   _getTemplate() {

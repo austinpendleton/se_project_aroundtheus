@@ -126,7 +126,7 @@ cardAddForm.addEventListener("submit", function (event) {
 // PopupWithImage callback
 
 const previewPopup = new PopupWithImage(config.imagePopup);
-previewPopup.setEventListeners();
+previewPopup.open();
 
 // PopupWithForm callback
 
