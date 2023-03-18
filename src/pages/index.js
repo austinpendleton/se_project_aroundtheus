@@ -46,6 +46,24 @@ const userInfo = new UserInfo({
   profileDescriptionSelector: profileDescriptionInput,
 });
 
+const addCardPopup = new PopupWithForm({
+  popupSelector: "#add-card-modal",
+  handleFormSubmit: (data) => {
+    const card = createCard(data);
+    cardSection.addItem(card);
+    addCardPopup.close();
+  },
+});
+addCardPopup.setEventListeners();
+
+const userInfoPopup = new PopupWithForm({
+  popupSelector: "#edit-modal",
+  handleFormSubmit: (data) => {
+    userInfo.setProfileInfo(data.name, data.description);
+  },
+});
+userInfoPopup.setEventListeners();
+
 /* Toggle Functions */
 
 profileEditOpen.addEventListener("click", function () {
@@ -129,21 +147,3 @@ const previewPopup = new PopupWithImage(config.imagePopup);
 previewPopup.open();
 
 // PopupWithForm callback
-
-const addCardPopup = new PopupWithForm({
-  popupSelector: "#add-card-modal",
-  handleFormSubmit: (data) => {
-    const card = createCard(data);
-    cardSection.addItem(card);
-    addCardPopup.close();
-  },
-});
-addCardPopup.setEventListeners();
-
-const userInfoPopup = new PopupWithForm({
-  popupSelector: "#edit-modal",
-  handleFormSubmit: (data) => {
-    userInfo.setProfileInfo(data.name, data.description);
-  },
-});
-userInfoPopup.setEventListeners();
