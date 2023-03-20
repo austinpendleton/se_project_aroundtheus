@@ -94,7 +94,9 @@
             class="modal__error modal__about-error"
             id="owner-description-error"
           ></span>
-          <button class="modal__button" type="submit">Save</button>
+          <button class="modal__button" type="submit" id="submit-button">
+            Save
+          </button>
         </form>
       </div>
 
@@ -137,7 +139,7 @@
             id="card-link-error"
           ></span>
 
-          <button class="modal__button" type="submit" id="card-submit-button">
+          <button class="modal__button" type="submit" id="submit-button">
             Create
           </button>
         </form>
@@ -145,14 +147,18 @@
 
       <div class="modal" id="image-modal">
         <div class="modal__image-container" id="image-template">
-          <button class="modal__image-close" id="image-close" type="button">
+          <button
+            class="modal__image-close modal__close-img"
+            id="image-close"
+            type="button"
+          >
             <img
               class="modal__close-img"
               src="<%=require('./images/close-icon.png')%>"
               alt="close button icon"
             />
           </button>
-          <img class="modal__image" src=" " alt="" />
+          <img class="modal__image modal__close-img" src=" " alt="" />
           <p class="modal__image-title"></p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 export const validationSettings = {
   formSelector: ".modal__container",
   inputSelector: ".modal__input",
-  submitButtonSelector: "#card-submit-button",
+  submitButtonSelector: "#submit-button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
@@ -33,40 +33,6 @@ export const initialCards = [
     link: "https://images.unsplash.com/photo-1601893920895-e3ed4a655d27?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
   },
 ];
-
-//   const cardGallery = document.querySelector(".cards__gallery");
-
-// /* Buttons */
-
-// const cardAddButton = document.querySelector("#add-button");
-
-// const profileEditOpen = document.querySelector(".profile__edit");
-
-// const imagePreviewClose = document.querySelector("#image-close");
-
-// /* Popup */
-
-// const cardAddPopup = document.querySelector("#add-card-modal");
-// const cardAddCloseButton = cardAddPopup.querySelector("#close-button");
-// const cardAddForm = document.querySelector("#add-card-form");
-// const cardNameField = document.querySelector("#card-name");
-// const cardLinkField = document.querySelector("#card-link");
-
-// const imagePopup = document.querySelector("#image-modal");
-// const profileEditPopup = document.querySelector("#edit-modal");
-// const profileEditClose = profileEditPopup.querySelector(".modal__close");
-
-// const profileForm = document.querySelector("#modal-profile-form");
-// const profileEditTitle = document.querySelector(".profile__title");
-// const profileEditDescription = document.querySelector(".profile__subtitle");
-// const profileTitleInput = profileForm.querySelector(".modal__name");
-// const profileDescriptionInput = profileForm.querySelector(
-//   ".modal__description"
-// );
-
-// /* Template */
-
-// const cardSelector = "#card-template";
 
 export const config = {
   cardNameField: "#card-name",

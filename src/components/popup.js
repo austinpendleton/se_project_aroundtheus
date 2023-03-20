@@ -20,7 +20,7 @@ export default class Popup {
     this._popupElement.addEventListener("mousedown", (evt) => {
       if (
         evt.target.classList.contains("modal") ||
-        evt.target.classList.contains("modal__close-button")
+        evt.target.classList.contains("modal__close-img")
       ) {
         this.close();
       }
