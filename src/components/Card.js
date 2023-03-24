@@ -30,22 +30,6 @@ class Card {
   _handleImagePopup() {
     this._handleCardClick({ name: this._name, link: this._link });
   }
-  // _handlePreviewPicture() {
-  //   this._preview = document.querySelector("#image-modal");
-
-  //   const previewLink = this._link;
-  //   const previewAlt = this._name;
-
-  //   const previewCaption = this._name;
-  //   const modalPreviewImage = this._preview.querySelector(".modal__image");
-
-  //   const modalPreviewCaption = previewAlt;
-
-  //   modalPreviewImage.setAttribute("src", previewLink);
-
-  //   modalPreviewImage.setAttribute("alt", previewAlt);
-  //   this._preview.querySelector(".modal__image-title").textContent = this._name;
-  // }
 
   _getTemplate() {
     return document

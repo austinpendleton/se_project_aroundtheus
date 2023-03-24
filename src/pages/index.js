@@ -11,9 +11,6 @@ import {
   validationSettings,
 } from "../utils/constants.js";
 
-//declaring variables
-
-/* Cards */
 const cardAddForm = document.querySelector("#add-card-form");
 const profileModal = document.querySelector(config.profileModalSelector);
 const profileEditForm = profileModal.querySelector(config.formSelector);
@@ -37,8 +34,6 @@ const profileEditDescription = document.querySelector(".profile__subtitle");
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-// UserInfo callback
-
 const userInfo = new UserInfo({
   profileNameSelector: profileTitleInput,
   profileDescriptionSelector: profileDescriptionInput,
@@ -46,9 +41,10 @@ const userInfo = new UserInfo({
 
 const addCardPopup = new PopupWithForm({
   popupSelector: "#add-card-modal",
-  handleFormSubmit: (data) => {
-    const card = createCard(data);
-    cardSection.addItem(card);
+  handleFormSubmit: ({ title, link }) => {
+    const card = createCard({ name: title, link });
+    cardSection.addItem(card.getElement());
+
     addCardPopup.close();
   },
 });
@@ -74,8 +70,6 @@ profileForm.addEventListener("submit", function (event) {
   userInfoPopup.close();
 });
 
-/* Toggle Functions */
-
 profileEditOpen.addEventListener("click", function () {
   profileTitleInput.value = profileEditTitle.textContent;
   profileDescriptionInput.value = profileEditDescription.textContent;
@@ -85,21 +79,14 @@ profileEditOpen.addEventListener("click", function () {
 
 cardAddButton.addEventListener("click", () => {
   addCardPopup.open();
+
   addFormValidator.resetValidation();
 });
 
-/* Render Card Functions */
-
-function createCard() {
-  const createdCard = {
-    name: config.cardNameField.value,
-    link: config.cardLinkField.value,
-  };
-  const card = new Card(createdCard, config.cardSelector);
+function createCard(data) {
+  const card = new Card(data, config.cardSelector);
   return card;
 }
-
-// Section callback
 
 const cardSection = new Section(
   { items: initialCards, renderer: renderCard },
@@ -115,22 +102,5 @@ function renderCard(data) {
   cardSection.addItem(card.getElement());
 }
 
-cardAddForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  config.cardGallery.prepend(createCard().getElement());
-  addCardPopup.close();
-  cardAddForm.reset();
-});
-
-// initialCards.forEach(function (cardData) {
-//   const card = new Card(cardData, config.cardSelector);
-//   config.cardGallery.prepend(card.getElement());
-// });
-
-// PopupWithImage callback
-// const cardImage = document.querySelector(".card__image");
-
 const previewPopup = new PopupWithImage(config.imagePopup);
 previewPopup.setEventListeners();
-// PopupWithForm callback
