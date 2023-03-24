@@ -39,11 +39,18 @@ const userInfo = new UserInfo({
   profileDescriptionSelector: profileDescriptionInput,
 });
 
+function renderCard(data) {
+  const card = new Card(data, config.cardSelector, (data) => {
+    previewPopup.open(data);
+  });
+  cardSection.addItem(card.getElement());
+}
+
 const addCardPopup = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: ({ title, link }) => {
     const card = createCard({ name: title, link });
-    cardSection.addItem(card.getElement());
+    cardSection.addItem(card, { name: title, link });
 
     addCardPopup.close();
   },
@@ -83,10 +90,11 @@ cardAddButton.addEventListener("click", () => {
   addFormValidator.resetValidation();
 });
 
-function createCard(data) {
-  const card = new Card(data, config.cardSelector);
-  return card;
-}
+//reviewer said remove
+// function createCard(data) {
+//   const card = new Card(data, config.cardSelector);
+//   return card;
+// }
 
 const cardSection = new Section(
   { items: initialCards, renderer: renderCard },
@@ -94,13 +102,6 @@ const cardSection = new Section(
   config.cardGallery
 );
 cardSection.renderItems();
-
-function renderCard(data) {
-  const card = new Card(data, config.cardSelector, (data) => {
-    previewPopup.open(data);
-  });
-  cardSection.addItem(card.getElement());
-}
 
 const previewPopup = new PopupWithImage(config.imagePopup);
 previewPopup.setEventListeners();

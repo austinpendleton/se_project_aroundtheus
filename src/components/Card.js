@@ -25,7 +25,7 @@ class Card {
       .classList.toggle("card__heart_active");
   }
   _handleDeleteButton() {
-    this._element.querySelector(".card__delete").closest(".card").remove();
+    this._element.remove();
   }
   _handleImagePopup() {
     this._handleCardClick({ name: this._name, link: this._link });
