@@ -2,7 +2,7 @@ import "../pages/index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
-import Section from "../components/Section.js";
+import Section from "../components/section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import {
@@ -49,8 +49,7 @@ function renderCard(data) {
 const addCardPopup = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: ({ title, link }) => {
-    const card = createCard({ name: title, link });
-    cardSection.addItem(card, { name: title, link });
+    renderCard({ name: title, link });
 
     addCardPopup.close();
   },
@@ -68,18 +67,21 @@ userInfoPopup.setEventListeners();
 profileForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const titleValue = event.target.title.value;
-  const descriptionValue = event.target.description.value;
+  // const titleValue = event.target.title.value;
+  // const descriptionValue = event.target.description.value;
 
-  profileEditTitle.textContent = titleValue;
-  profileEditDescription.textContent = descriptionValue;
+  // profileEditTitle.textContent = titleValue;
+  // profileEditDescription.textContent = descriptionValue;
+  userInfo.setUserInfo(userName, description);
 
   userInfoPopup.close();
 });
 
 profileEditOpen.addEventListener("click", function () {
-  profileTitleInput.value = profileEditTitle.textContent;
-  profileDescriptionInput.value = profileEditDescription.textContent;
+  // profileTitleInput.value = profileEditTitle.textContent;
+  // profileDescriptionInput.value = profileEditDescription.textContent;
+  const { userName, description } = userInfo.getUserInfo();
+  userInfo.setUserInfo(userName, description);
 
   userInfoPopup.open();
 });

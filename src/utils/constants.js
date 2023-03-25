@@ -56,4 +56,5 @@ export const config = {
   profileModalSelector: ".modal",
   formSelector: ".modal__container",
   popupSelector: ".modal__opened",
+  profileNameSelector: ".profile__title",
 };

@@ -1,4 +1,4 @@
-import Popup from "./Popup.js";
+import Popup from "./popup.js";
 
 class PopupWithForm extends Popup {
   constructor({ popupSelector, handleFormSubmit }) {
@@ -27,8 +27,8 @@ class PopupWithForm extends Popup {
     evt.preventDefault();
     this._handleFormSubmit(this._getInputValues());
   };
-  closeModal() {
-    super.closeModal();
+  close() {
+    super.close();
     this._modalForm.reset();
   }
 }
