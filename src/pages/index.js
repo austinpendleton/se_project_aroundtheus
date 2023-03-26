@@ -2,7 +2,7 @@ import "../pages/index.css";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
-import Section from "../components/section.js";
+import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import {
@@ -25,18 +25,16 @@ const profileEditOpen = document.querySelector(".profile__edit");
 const profileForm = document.querySelector("#modal-profile-form");
 
 const profileTitleInput = profileForm.querySelector("#owner-name");
-const profileEditTitle = document.querySelector(".profile__title");
 const profileDescriptionInput = profileForm.querySelector(
   ".modal__description"
 );
-const profileEditDescription = document.querySelector(".profile__subtitle");
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 const userInfo = new UserInfo({
-  profileNameSelector: profileEditTitle,
-  profileDescriptionSelector: profileEditDescription,
+  profileNameSelector: config.profileNameSelector,
+  profileDescriptionSelector: config.profileDescriptionSelector,
 });
 
 function renderCard(data) {
@@ -59,21 +57,11 @@ addCardPopup.setEventListeners();
 const userInfoPopup = new PopupWithForm({
   popupSelector: "#edit-modal",
   handleFormSubmit: (data) => {
-    userInfo.setUserInfo(data.name, data.description);
+    userInfo.setUserInfo(data.title, data.description);
+    userInfoPopup.close();
   },
 });
 userInfoPopup.setEventListeners();
-
-profileForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const titleValue = event.target.title.value;
-  const descriptionValue = event.target.description.value;
-
-  userInfo.setUserInfo(titleValue, descriptionValue);
-
-  userInfoPopup.close();
-});
 
 profileEditOpen.addEventListener("click", function () {
   const { name, description } = userInfo.getUserInfo();
