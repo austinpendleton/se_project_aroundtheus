@@ -35,8 +35,8 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 const userInfo = new UserInfo({
-  profileNameSelector: profileTitleInput,
-  profileDescriptionSelector: profileDescriptionInput,
+  profileNameSelector: profileEditTitle,
+  profileDescriptionSelector: profileEditDescription,
 });
 
 function renderCard(data) {
@@ -67,23 +67,21 @@ userInfoPopup.setEventListeners();
 profileForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  // const titleValue = event.target.title.value;
-  // const descriptionValue = event.target.description.value;
+  const titleValue = event.target.title.value;
+  const descriptionValue = event.target.description.value;
 
-  // profileEditTitle.textContent = titleValue;
-  // profileEditDescription.textContent = descriptionValue;
-  userInfo.setUserInfo(userName, description);
+  userInfo.setUserInfo(titleValue, descriptionValue);
 
   userInfoPopup.close();
 });
 
 profileEditOpen.addEventListener("click", function () {
-  // profileTitleInput.value = profileEditTitle.textContent;
-  // profileDescriptionInput.value = profileEditDescription.textContent;
-  const { userName, description } = userInfo.getUserInfo();
-  userInfo.setUserInfo(userName, description);
+  const { name, description } = userInfo.getUserInfo();
 
-  userInfoPopup.open();
+  profileTitleInput.value = name;
+  profileDescriptionInput.value = description;
+
+  userInfoPopup.open({ name, description });
 });
 
 cardAddButton.addEventListener("click", () => {
@@ -91,12 +89,6 @@ cardAddButton.addEventListener("click", () => {
 
   addFormValidator.resetValidation();
 });
-
-//reviewer said remove
-// function createCard(data) {
-//   const card = new Card(data, config.cardSelector);
-//   return card;
-// }
 
 const cardSection = new Section(
   { items: initialCards, renderer: renderCard },
