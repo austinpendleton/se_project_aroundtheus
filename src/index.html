@@ -35,6 +35,15 @@
             alt="jacques cousteau profile image"
             class="profile__avatar"
           />
+          <button class="profile__edit-avatar" type="button">
+            <img
+              src="<%=require('./images/pencil2.svg')%>"
+              alt="edit
+            avatar icon"
+              id="edit-avatar-icon"
+              class="profile__edit-avatar-icon"
+            />
+          </button>
         </div>
         <div class="profile__center">
           <h1 class="profile__title">Jacques Cousteau</h1>
@@ -194,6 +203,56 @@
           </template>
         </div>
       </section>
+
+      <!--Delete confirmation-->
+      <div class="modal" id="confirm-del-modal">
+        <div class="modal__del-container" id="confirm-del-container">
+          <button class="modal__close" id="close-button" type="button">
+            <img
+              class="modal__close-img"
+              src="<%=require('./images/close-icon.png')%>"
+              alt="close button icon"
+            />
+          </button>
+          <h2 class="modal__title modal__text-del" id="confirm-del-header">
+            Are you sure?
+          </h2>
+          <form class="modal__container" id="confirm-del-form">
+            <button type="submit" class="modal__button" id="confirm-del-button">
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+      <!--Change Profile Image-->
+      <div class="modal" id="avatar-form">
+        <form class="modal__container">
+          <button class="modal__close" id="close-button" type="button">
+            <img
+              class="modal__close-img"
+              src="<%=require('./images/close-icon.png')%>"
+              alt="close button icon"
+            />
+          </button>
+          <h2 class="modal__title" id="avatar-form-heading">
+            Change profile picture
+          </h2>
+          <fieldset class="modal__form-fieldset" id="avatar-form-fieldset">
+            <input
+              class="modal__description modal__input modal__input_type_url modal__input_has-error"
+              type="url"
+              name="avatar"
+              placeholder="Profile Image Link"
+              required
+              id="avatar-form-link"
+            />
+            <span class="modal__error" id="avatar-form-link-error"></span>
+            <button type="submit" class="modal__button" id="avatar-form-submit">
+              Save
+            </button>
+          </fieldset>
+        </form>
+      </div>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Around The U.S.</p>

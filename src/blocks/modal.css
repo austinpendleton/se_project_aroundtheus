@@ -143,6 +143,10 @@
   line-height: 1.2;
 }
 
+#confirm-del-button {
+  margin-top: 0;
+}
+
 .modal__button:hover {
   cursor: pointer;
   background: rgba(0, 0, 0, 0.8);
@@ -176,6 +180,27 @@
 
 .modal__image-close:hover {
   opacity: 0.6;
+}
+
+.modal__del-container {
+  position: relative;
+  margin: auto;
+  background-color: #fff;
+  height: 181px;
+  width: 430px;
+  border-radius: 10px;
+}
+#avatar-form-submit {
+  margin-top: 54px;
+}
+#avatar-form-link {
+  padding-bottom: 4px;
+}
+#avatar-form-heading {
+  margin-bottom: 54px;
+}
+#avatar-form-fieldset {
+  height: 272px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
@@ -244,5 +269,19 @@
 
   .modal__image {
     width: 100%;
+  }
+  #avatar-form-submit {
+    margin-top: 65px;
+  }
+  #avatar-form-heading {
+    width: 230px;
+    font-size: 20px;
+    align-content: center;
+    margin-bottom: 60px;
+    margin-left: 25px;
+  }
+  .modal__del-container {
+    height: 200px;
+    width: 282px;
   }
 }
