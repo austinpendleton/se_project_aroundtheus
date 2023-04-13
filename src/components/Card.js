@@ -1,7 +1,9 @@
 class Card {
-  constructor(cardData, cardSelector, handleCardClick) {
+  constructor(cardData, cardSelector, userId, handleCardClick) {
     this._name = cardData.name;
     this._link = cardData.link;
+    this._likes = cardData.likes;
+    this._userId = userId;
 
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
@@ -30,6 +32,24 @@ class Card {
   _handleImagePopup() {
     this._handleCardClick({ name: this._name, link: this._link });
   }
+  updateLikes = (likes) => {
+    this._likes = likes;
+    this.renderLikes();
+  };
+
+  _isLiked() {
+    return this._likes.some((like) => like._id === this._userId);
+  }
+
+  renderLikes() {
+    this._cardCounter.textContent = this._likes.length;
+
+    if (this._isLiked()) {
+      this._likeButton.classList.add("card__heart_active");
+    } else {
+      this._likeButton.classList.remove("card__heart_active");
+    }
+  }
 
   _getTemplate() {
     return document
@@ -40,12 +60,13 @@ class Card {
 
   getElement() {
     this._element = this._getTemplate();
-
+    this._cardCounter = this._element.querySelector(".card__like-counter");
+    this._likeButton = this._element.querySelector(".card__heart");
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__title").textContent = this._name;
     this._element.querySelector(".card__image").alt = this._name;
     this._setEventListeners();
-
+    this.renderLikes();
     return this._element;
   }
 }

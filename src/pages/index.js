@@ -40,7 +40,8 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-
+let cardApiSection;
+let userId;
 api
   .getAppInfo()
   .then(([cardsResponse, userResponse]) => {
@@ -48,25 +49,19 @@ api
     userInfo.setUserInfo(userResponse);
     userInfo.setAvatar(userResponse);
 
-    cardSection = new Section(
+    cardApiSection = new Section(
       {
         items: cardsResponse,
         renderer: renderCard,
       },
       config.cardGallery
     );
-    cardSection.renderItems();
+    cardApiSection.renderItems();
   })
   .catch((error) => {
     console.log(error);
   });
 
-// function renderCard(data) {
-//   const card = new Card(data, config.cardSelector, (data) => {
-//     previewPopup.open(data);
-//   });
-//   cardSection.addItem(card.getElement());
-// }
 function renderCard(data) {
   const card = new Card(
     data,
@@ -74,10 +69,10 @@ function renderCard(data) {
     (data) => {
       previewPopup.open(data);
     },
-    (data, isLiked) => {
+    (cardId, isLiked) => {
       if (!isLiked) {
         api
-          .addLikes(data)
+          .addLikes(cardId)
           .then((res) => {
             card.updateLikes(res.likes);
           })
@@ -86,7 +81,7 @@ function renderCard(data) {
           });
       } else {
         api
-          .removeLikes(data)
+          .removeLikes(cardId)
           .then((res) => {
             card.updateLikes(res.likes);
           })
@@ -95,11 +90,11 @@ function renderCard(data) {
           });
       }
     },
-    (data) => {
+    (cardId) => {
       delPopup.setEventListeners(() => {
         delPopup.showLoading();
         return api
-          .deleteCard(data)
+          .deleteCard(cardId)
           .then(() => {
             cardSection.removeCard();
             delPopup.close();
@@ -116,29 +111,6 @@ function renderCard(data) {
   );
   cardSection.addItem(card.getElement());
 }
-
-// const addCardPopup = new PopupWithForm({
-//   popupSelector: "#add-card-modal",
-//   handleFormSubmit: ({ title, link }) => {
-//     renderCard({ name: title, link });
-
-//     addCardPopup.close();
-//   },
-// });
-
-const addCardPopup = new PopupWithForm("#add-card-modal", {
-  handleFormSubmit: submitAddCard,
-  loadingButtonText: "Saving...",
-});
-addCardPopup.setEventListeners();
-
-// const userInfoPopup = new PopupWithForm({
-//   popupSelector: "#edit-modal",
-//   handleFormSubmit: (data) => {
-//     userInfo.setUserInfo(data.title, data.description);
-//     userInfoPopup.close();
-//   },
-// });
 
 function submitAvatarForm({ avatar }) {
   avatarForm.showLoading();
@@ -174,13 +146,22 @@ function submitAddCard({ name, link }) {
       addCardPopup.hideLoading();
     });
 }
-const userInfoPopup = new PopupWithForm("#edit-modal", {
+const addCardPopup = new PopupWithForm({
+  popupSelector: "#add-card-modal",
+  handleFormSubmit: submitAddCard,
+  loadingButtonText: "Saving...",
+});
+addCardPopup.setEventListeners();
+
+const userInfoPopup = new PopupWithForm({
+  popupSelector: "#edit-modal",
   handleFormSubmit: submitEditProfile,
   loadingButtonText: "Saving...",
 });
 userInfoPopup.setEventListeners();
 
-const avatarForm = new PopupWithForm("#avatar-form", {
+const avatarForm = new PopupWithForm({
+  popupSelector: "#avatar-form",
   handleFormSubmit: submitAvatarForm,
   loadingButtonText: "Saving...",
 });
@@ -230,7 +211,7 @@ const cardSection = new Section(
 );
 cardSection.renderItems();
 
-const previewPopup = new PopupWithImage(config.imagePopup);
+const previewPopup = new PopupWithImage("#image-modal");
 previewPopup.setEventListeners();
 
 const delPopup = new PopupWithConfirm("#confirm-del-modal", "Saving...");
