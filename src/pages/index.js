@@ -32,6 +32,22 @@ const userInfo = new UserInfo({
   profileDescriptionSelector: config.profileDescriptionSelector,
   avatarSelector: config.avatarSelector,
 });
+const previewPopup = new PopupWithImage("#image-modal");
+previewPopup.setEventListeners();
+
+const editFormValidator = new FormValidator(
+  validationSettings,
+  profileEditForm
+);
+const addFormValidator = new FormValidator(validationSettings, cardAddForm);
+const avatarFormValidator = new FormValidator(
+  validationSettings,
+  editAvatarForm
+);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
@@ -46,7 +62,7 @@ api
   .getAppInfo()
   .then(([cardsResponse, userResponse]) => {
     userId = userResponse._id;
-    userInfo.setUserInfo(userResponse);
+    userInfo.setUserInfo(userResponse.about);
     userInfo.setAvatar(userResponse);
 
     cardApiSection = new Section(
@@ -63,14 +79,14 @@ api
   });
 
 function renderCard(data) {
-  const card = new Card(
-    data,
-    config.cardSelector,
-    (data) => {
+  const card = new Card({
+    cardData: data,
+    cardSelector: config.cardSelector,
+    handleCardClick: (data) => {
       previewPopup.open(data);
     },
-    (cardId, isLiked) => {
-      if (!isLiked) {
+    handleLikeClick: (cardId, isLiked) => {
+      if (!card.isLiked()) {
         api
           .addLikes(cardId)
           .then((res) => {
@@ -90,8 +106,8 @@ function renderCard(data) {
           });
       }
     },
-    (cardId) => {
-      delPopup.setEventListeners(() => {
+    handleDeleteClick(cardId) {
+      delPopup.setSubmit(() => {
         delPopup.showLoading();
         return api
           .deleteCard(cardId)
@@ -107,8 +123,8 @@ function renderCard(data) {
           });
       });
       delPopup.open();
-    }
-  );
+    },
+  });
   cardSection.addItem(card.getElement());
 }
 
@@ -211,21 +227,5 @@ const cardSection = new Section(
 );
 cardSection.renderItems();
 
-const previewPopup = new PopupWithImage("#image-modal");
-previewPopup.setEventListeners();
-
 const delPopup = new PopupWithConfirm("#confirm-del-modal", "Saving...");
-
-const editFormValidator = new FormValidator(
-  validationSettings,
-  profileEditForm
-);
-const addFormValidator = new FormValidator(validationSettings, cardAddForm);
-const avatarFormValidator = new FormValidator(
-  validationSettings,
-  editAvatarForm
-);
-
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
-avatarFormValidator.enableValidation();
+delPopup.setEventListeners();

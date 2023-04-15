@@ -156,11 +156,7 @@
 
       <div class="modal" id="image-modal">
         <div class="modal__image-container" id="image-template">
-          <button
-            class="modal__image-close modal__close-img"
-            id="image-close"
-            type="button"
-          >
+          <button class="modal__close" id="image-close" type="button">
             <img
               class="modal__close-img"
               src="<%=require('./images/close-icon.png')%>"
@@ -227,7 +223,7 @@
       </div>
       <!--Change Profile Image-->
       <div class="modal" id="avatar-form">
-        <form class="modal__container">
+        <form class="modal__container-avatar">
           <button class="modal__close" id="close-button" type="button">
             <img
               class="modal__close-img"
@@ -238,20 +234,18 @@
           <h2 class="modal__title" id="avatar-form-heading">
             Change profile picture
           </h2>
-          <fieldset class="modal__form-fieldset" id="avatar-form-fieldset">
-            <input
-              class="modal__description modal__input modal__input_type_url modal__input_has-error"
-              type="url"
-              name="avatar"
-              placeholder="Profile Image Link"
-              required
-              id="avatar-form-link"
-            />
-            <span class="modal__error" id="avatar-form-link-error"></span>
-            <button type="submit" class="modal__button" id="avatar-form-submit">
-              Save
-            </button>
-          </fieldset>
+          <input
+            class="modal__description modal__input modal__input_type_url modal__input_has-error"
+            type="url"
+            name="avatar"
+            placeholder="Profile Image Link"
+            required
+            id="avatar-form-link"
+          />
+          <span class="modal__error" id="avatar-form-link-error"></span>
+          <button type="submit" class="modal__button" id="avatar-form-submit">
+            Save
+          </button>
         </form>
       </div>
     </main>

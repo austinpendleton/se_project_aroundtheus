@@ -45,14 +45,18 @@
 }
 
 .modal__close {
-  position: absolute;
-  top: 160px;
-  padding-left: 432px;
-  background-color: transparent;
   width: 40px;
   height: 40px;
+
   border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
   cursor: pointer;
+  transition: opacity 0.4s;
 }
 
 .modal__close:hover {
@@ -69,6 +73,16 @@
   background-color: #fff;
   z-index: 2;
   border-radius: 10px;
+}
+.modal__container-avatar {
+  position: relative;
+  width: 430px;
+  height: 272px;
+  border-radius: 10px;
+  margin: auto;
+  background-color: #fff;
+  padding: 36px;
+  margin-top: 224px;
 }
 
 .modal__title {
@@ -190,17 +204,12 @@
   width: 430px;
   border-radius: 10px;
 }
-#avatar-form-submit {
-  margin-top: 54px;
-}
+
 #avatar-form-link {
   padding-bottom: 4px;
 }
 #avatar-form-heading {
   margin-bottom: 54px;
-}
-#avatar-form-fieldset {
-  height: 272px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {

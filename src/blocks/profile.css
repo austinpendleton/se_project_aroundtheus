@@ -7,9 +7,12 @@
 
 .profile__avatar {
   border-radius: 50%;
-  margin-top: 36.25px;
-  max-width: 168.75px;
-  max-height: 127.5px;
+  width: 120px;
+  height: 120px;
+  background-position: center;
+  object-fit: cover;
+  margin-right: 24px;
+  margin-top: 36px;
 }
 
 .profile__title {
@@ -129,6 +132,9 @@
     margin-right: auto;
     margin-left: auto;
     flex-wrap: wrap;
+  }
+  .profile__avatar {
+    margin: 38px 0 0;
   }
 
   .profile__title {
