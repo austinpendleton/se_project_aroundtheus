@@ -32,10 +32,14 @@ export default class PopupWithConfirm extends Popup {
       this._submitButton.textContent = this._submitButtonText;
     }
   }
-  showLoading() {
-    this._modalFormButton.textContent = this._loadingButtonText;
+  showLoading(isLoading) {
+    if (isLoading) {
+      this._submitButton.textContent = "Loading...";
+    } else {
+      this._submitButton.textContent = "Yes";
+    }
   }
   hideLoading() {
-    this._modalFormButton.textContent = this._submitButtonText;
+    this._submitButton.textContent = this._submitButtonText;
   }
 }

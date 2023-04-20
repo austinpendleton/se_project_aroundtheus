@@ -10,9 +10,9 @@ export default class UserInfo {
     );
     this._avatarElement = document.querySelector(avatarSelector);
   }
-  setUserInfo({ userName, description }) {
-    this._profileNameElement.textContent = userName;
-    this._profileDescriptionElement.textContent = description;
+  setUserInfo({ name, about }) {
+    this._profileNameElement.textContent = name;
+    this._profileDescriptionElement.textContent = about;
   }
   getUserInfo() {
     return {

@@ -24,7 +24,7 @@ class Card {
       .addEventListener("click", () => this._handleLikeClick(this._cardId));
     this._element
       .querySelector(".card__delete")
-      .addEventListener("click", () => this._handleDeleteButton());
+      .addEventListener("click", () => this._handleDeleteClick(this._cardId));
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () =>
@@ -36,9 +36,9 @@ class Card {
   //     .querySelector(".card__button")
   //     .classList.toggle("card__heart_active");
   // }
-  _handleDeleteButton() {
-    this._element.remove();
-  }
+  // _handleDeleteButton() {
+  //   this._element.remove();
+  // }
   _handleImagePopup() {
     this._handleCardClick({ name: this._name, link: this._link });
   }
@@ -60,6 +60,10 @@ class Card {
       this._likeButton.classList.remove("card__heart_active");
     }
   }
+  removeCard = () => {
+    this._element.remove();
+    this._element = null;
+  };
 
   _getTemplate() {
     return document

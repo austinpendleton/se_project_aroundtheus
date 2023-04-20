@@ -7,11 +7,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Api from "../utils/api.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
-import {
-  config,
-  initialCards,
-  validationSettings,
-} from "../utils/constants.js";
+import { config, validationSettings } from "../utils/constants.js";
 
 const cardAddForm = document.querySelector("#add-card-form");
 const profileModal = document.querySelector(config.profileModalSelector);
@@ -44,10 +40,33 @@ const avatarFormValidator = new FormValidator(
   validationSettings,
   editAvatarForm
 );
+const addCardPopup = new PopupWithForm({
+  popupSelector: "#add-card-modal",
+  handleFormSubmit: submitAddCard,
+  loadingButtonText: "Saving...",
+});
+addCardPopup.setEventListeners();
+
+const userInfoPopup = new PopupWithForm({
+  popupSelector: "#edit-modal",
+  handleFormSubmit: submitEditProfile,
+  loadingButtonText: "Saving...",
+});
+userInfoPopup.setEventListeners();
+
+const avatarForm = new PopupWithForm({
+  popupSelector: "#avatar-form",
+  handleFormSubmit: submitAvatarForm,
+  loadingButtonText: "Saving...",
+});
+avatarForm.setEventListeners();
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
+
+const delPopup = new PopupWithConfirm("#confirm-del-modal", "Saving...");
+delPopup.setEventListeners();
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-12",
@@ -62,7 +81,7 @@ api
   .getAppInfo()
   .then(([cardsResponse, userResponse]) => {
     userId = userResponse._id;
-    userInfo.setUserInfo(userResponse.about);
+    userInfo.setUserInfo(userResponse);
     userInfo.setAvatar(userResponse);
 
     cardApiSection = new Section(
@@ -112,7 +131,7 @@ function renderCard(data) {
         return api
           .deleteCard(cardId)
           .then(() => {
-            cardSection.removeCard();
+            cardApiSection.removeCard();
             delPopup.close();
           })
           .catch((error) => {
@@ -125,7 +144,7 @@ function renderCard(data) {
       delPopup.open();
     },
   });
-  cardSection.addItem(card.getElement());
+  cardApiSection.addItem(card.getElement());
 }
 
 function submitAvatarForm({ avatar }) {
@@ -150,7 +169,7 @@ function submitAddCard({ name, link }) {
   return api
     .addNewCard(name, link)
     .then((res) => {
-      renderCard(res, cardSection);
+      renderCard(res, cardApiSection);
     })
     .then(() => {
       this.close();
@@ -162,25 +181,6 @@ function submitAddCard({ name, link }) {
       addCardPopup.hideLoading();
     });
 }
-const addCardPopup = new PopupWithForm({
-  popupSelector: "#add-card-modal",
-  handleFormSubmit: submitAddCard,
-  loadingButtonText: "Saving...",
-});
-addCardPopup.setEventListeners();
-
-const userInfoPopup = new PopupWithForm({
-  popupSelector: "#edit-modal",
-  handleFormSubmit: submitEditProfile,
-  loadingButtonText: "Saving...",
-});
-userInfoPopup.setEventListeners();
-
-const avatarForm = new PopupWithForm({
-  popupSelector: "#avatar-form",
-  handleFormSubmit: submitAvatarForm,
-  loadingButtonText: "Saving...",
-});
 
 profileEditOpen.addEventListener("click", function () {
   const { name, description } = userInfo.getUserInfo();
@@ -198,7 +198,7 @@ function submitEditProfile(inputValues) {
     .then(() => {
       userInfo.setUserInfo({
         name: inputValues.title,
-        description: inputValues.subtitle,
+        about: inputValues.subtitle,
       });
       userInfoPopup.close();
     })
@@ -219,13 +219,3 @@ cardAddButton.addEventListener("click", () => {
 editAvatarButton.addEventListener("click", () => {
   avatarForm.open();
 });
-
-const cardSection = new Section(
-  { items: initialCards, renderer: renderCard },
-
-  config.cardGallery
-);
-cardSection.renderItems();
-
-const delPopup = new PopupWithConfirm("#confirm-del-modal", "Saving...");
-delPopup.setEventListeners();
