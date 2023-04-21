@@ -53,8 +53,8 @@
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  bottom: calc(100% + 5px);
-  left: calc(100% + 5px);
+  bottom: calc(100% + 3px);
+  left: calc(100% + 3px);
   cursor: pointer;
   transition: opacity 0.4s;
 }
@@ -81,7 +81,7 @@
   border-radius: 10px;
   margin: auto;
   background-color: #fff;
-  padding: 36px;
+
   margin-top: 224px;
 }
 
@@ -211,9 +211,14 @@
 
 #avatar-form-link {
   padding-bottom: 4px;
+  padding-top: 54px;
+  margin-top: 0;
 }
 #avatar-form-heading {
-  margin-bottom: 54px;
+  padding-top: 34px;
+}
+#avatar-form-submit {
+  width: 358px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {

@@ -112,6 +112,7 @@
   height: 120px;
   border-radius: 50%;
   transition: ease-in-out 0.2s;
+  margin-top: 36px;
 }
 .profile__edit-avatar:hover {
   opacity: 100%;
