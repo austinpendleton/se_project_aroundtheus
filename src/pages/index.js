@@ -40,22 +40,19 @@ const avatarFormValidator = new FormValidator(
   validationSettings,
   editAvatarForm
 );
-const addCardPopup = new PopupWithForm({
-  popupSelector: "#add-card-modal",
+const addCardPopup = new PopupWithForm("#add-card-modal", {
   handleFormSubmit: submitAddCard,
   loadingButtonText: "Saving...",
 });
 addCardPopup.setEventListeners();
 
-const userInfoPopup = new PopupWithForm({
-  popupSelector: "#edit-modal",
+const userInfoPopup = new PopupWithForm("#edit-modal", {
   handleFormSubmit: submitEditProfile,
   loadingButtonText: "Saving...",
 });
 userInfoPopup.setEventListeners();
 
-const avatarForm = new PopupWithForm({
-  popupSelector: "#avatar-form",
+const avatarForm = new PopupWithForm("#avatar-form", {
   handleFormSubmit: submitAvatarForm,
   loadingButtonText: "Saving...",
 });
