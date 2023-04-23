@@ -128,7 +128,7 @@ function renderCard(data) {
         return api
           .deleteCard(cardId)
           .then(() => {
-            cardApiSection.removeCard();
+            card.removeCard();
             delPopup.close();
           })
           .catch((error) => {
@@ -169,7 +169,7 @@ function submitAddCard({ name, link }) {
       renderCard(res, cardApiSection);
     })
     .then(() => {
-      this.close();
+      addCardPopup.close();
     })
     .catch((error) => {
       console.log(error);
