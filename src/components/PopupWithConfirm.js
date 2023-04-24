@@ -12,32 +12,28 @@ export default class PopupWithConfirm extends Popup {
     super.setEventListeners();
     this._formSelector.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._handleSubmitCallback();
+      this._handleSubmit();
     });
   }
-  setSubmit(handler) {
-    this._handleSubmitCallback = handler;
+  setSubmitAction(action) {
+    this._handleSubmit = action;
   }
-  toggleIsDeleting(isDeleting) {
-    if (isDeleting) {
-      this._submitButton.textContent = "Deleting...";
-    } else {
-      this._submitButton.textContent = this._submitButtonText;
-    }
-  }
-  toggleIsSaving(isSaving) {
-    if (isSaving) {
-      this._submitButton.textContent = "Saving...";
-    } else {
-      this._submitButton.textContent = this._submitButtonText;
-    }
-  }
-  showLoading(isLoading) {
-    if (isLoading) {
-      this._submitButton.textContent = "Loading...";
-    } else {
-      this._submitButton.textContent = "Yes";
-    }
+  // toggleIsDeleting(isDeleting) {
+  //   if (isDeleting) {
+  //     this._submitButton.textContent = "Deleting...";
+  //   } else {
+  //     this._submitButton.textContent = this._submitButtonText;
+  //   }
+  // }
+  // toggleIsSaving(isSaving) {
+  //   if (isSaving) {
+  //     this._submitButton.textContent = "Saving...";
+  //   } else {
+  //     this._submitButton.textContent = this._submitButtonText;
+  //   }
+  // }
+  showLoading() {
+    this._submitButton.textContent = this._loadingButtonText;
   }
   hideLoading() {
     this._submitButton.textContent = this._submitButtonText;

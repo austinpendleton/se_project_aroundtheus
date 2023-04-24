@@ -186,6 +186,7 @@
   max-height: 75vh;
   max-width: 75vh;
   z-index: 2;
+  position: relative;
 }
 
 .modal__image-close {

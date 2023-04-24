@@ -124,7 +124,7 @@ function renderCard(data) {
       }
     },
     handleDeleteClick(cardId) {
-      delPopup.setSubmit(() => {
+      delPopup.setSubmitAction(() => {
         delPopup.showLoading();
         return api
           .deleteCard(cardId)
