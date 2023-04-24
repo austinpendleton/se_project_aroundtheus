@@ -18,20 +18,7 @@ export default class PopupWithConfirm extends Popup {
   setSubmitAction(action) {
     this._handleSubmit = action;
   }
-  // toggleIsDeleting(isDeleting) {
-  //   if (isDeleting) {
-  //     this._submitButton.textContent = "Deleting...";
-  //   } else {
-  //     this._submitButton.textContent = this._submitButtonText;
-  //   }
-  // }
-  // toggleIsSaving(isSaving) {
-  //   if (isSaving) {
-  //     this._submitButton.textContent = "Saving...";
-  //   } else {
-  //     this._submitButton.textContent = this._submitButtonText;
-  //   }
-  // }
+
   showLoading() {
     this._submitButton.textContent = this._loadingButtonText;
   }
