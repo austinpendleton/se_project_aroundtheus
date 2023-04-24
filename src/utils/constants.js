@@ -22,7 +22,7 @@ export const config = {
   profileFormSelector: "#modal-profile-form",
   profileEditClose: ".modal__close",
   profileEditPopup: "#edit-modal",
-  cardAddCloseButton: "#close-button",
+  cardAddCloseButton: ".modal__close",
   imagePreviewClose: "#image-close",
   profileEditOpen: ".profile__edit",
   cardAddButton: "#add-button",

@@ -216,4 +216,5 @@ cardAddButton.addEventListener("click", () => {
 
 editAvatarButton.addEventListener("click", () => {
   avatarForm.open();
+  avatarFormValidator.resetValidation();
 });
