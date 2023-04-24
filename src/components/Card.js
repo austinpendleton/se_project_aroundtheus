@@ -22,9 +22,7 @@ class Card {
   _setEventListeners() {
     this._element
       .querySelector(".card__button")
-      .addEventListener("click", () =>
-        this._handleLikeClick(this._cardId, this.isLiked())
-      );
+      .addEventListener("click", () => this._handleLikeClick(this._cardId));
     this._element
       .querySelector(".card__delete")
       .addEventListener("click", () => this._handleDeleteClick(this._cardId));
@@ -51,7 +49,7 @@ class Card {
   };
 
   isLiked() {
-    return this._likes.some((like) => like._id === this._ownerId);
+    return this._likes.some((like) => like._id === this._userId);
   }
 
   renderLikes() {
@@ -86,10 +84,8 @@ class Card {
     this._setEventListeners();
     this.renderLikes();
 
-    if (this._ownerId) {
-      this._cardDeleteButton.classList.add(".card__delete");
-    } else {
-      this._cardDeleteButton.classList.remove(".card__delete");
+    if (this._ownerId !== this._userId) {
+      this._cardDeleteButton.remove();
     }
 
     return this._element;

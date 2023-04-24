@@ -98,10 +98,11 @@ function renderCard(data) {
   const card = new Card({
     cardData: data,
     cardSelector: config.cardSelector,
+    userId,
     handleCardClick: (data) => {
       previewPopup.open(data);
     },
-    handleLikeClick: (cardId, isLiked) => {
+    handleLikeClick: (cardId) => {
       if (!card.isLiked()) {
         api
           .addLikes(cardId)
@@ -180,22 +181,22 @@ function submitAddCard({ name, link }) {
 }
 
 profileEditOpen.addEventListener("click", function () {
-  const { name, description } = userInfo.getUserInfo();
+  const { name, about } = userInfo.getUserInfo();
 
   profileTitleInput.value = name;
-  profileDescriptionInput.value = description;
+  profileDescriptionInput.value = about;
 
-  userInfoPopup.open({ name, description });
+  userInfoPopup.open({ name, about });
 });
 
 function submitEditProfile(inputValues) {
   userInfoPopup.showLoading();
   return api
-    .updateProfileInfo(inputValues.title, inputValues.subtitle)
+    .updateProfileInfo(inputValues.title, inputValues.about)
     .then(() => {
       userInfo.setUserInfo({
         name: inputValues.title,
-        about: inputValues.subtitle,
+        about: inputValues.about,
       });
       userInfoPopup.close();
     })

@@ -26,13 +26,13 @@ export default class Api {
       }),
     }).then(this._checkResponse);
   }
-  updateProfileInfo(name, description) {
+  updateProfileInfo(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name,
-        description,
+        about,
       }),
     }).then(this._checkResponse);
   }

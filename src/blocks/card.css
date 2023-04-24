@@ -41,7 +41,14 @@
   border: none;
   cursor: pointer;
 }
-
+.card__button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  display: block;
+  border-radius: 10px 10px 0 0;
+  margin-right: 20px;
+}
 .card__heart:hover {
   opacity: 0.5;
 }
